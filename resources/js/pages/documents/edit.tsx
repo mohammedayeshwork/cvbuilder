@@ -1,6 +1,9 @@
 import { Head, Link } from '@inertiajs/react';
-import { ArrowLeft, Redo2, Undo2 } from 'lucide-react';
+import { ArrowLeft, LayoutPanelLeft, Redo2, Undo2 } from 'lucide-react';
 import { useState } from 'react';
+import { PageCount } from '@/editor/components/PageCount';
+import { RearrangePanel } from '@/editor/rearrange/RearrangePanel';
+import type { LayoutInfo } from '@/renderer/DocumentRenderer';
 import { Button } from '@/components/ui/button';
 import { useAutosave } from '@/editor/autosave';
 import { useEditBindings } from '@/editor/bindings';
@@ -33,6 +36,12 @@ export default function Edit({ document }: { document: CvDocument }) {
         document.revision,
     );
     useUndoShortcuts(store);
+    const [rearranging, setRearranging] = useState(false);
+    const [layout, setLayout] = useState<LayoutInfo>({
+        pages: 1,
+        plan: [],
+        oversized: [],
+    });
 
     return (
         <EditorStoreProvider value={store}>
@@ -47,13 +56,36 @@ export default function Edit({ document }: { document: CvDocument }) {
                     </Button>
                     <TitleField id={document.id} initial={document.title} />
                     <SaveIndicator status={status} error={error} />
+                    <PageCount layout={layout} />
                     <div className="ms-auto flex items-center gap-1">
                         <HistoryButtons />
-                        {document.type === 'resume' && <AddSectionDialog />}
+                        {document.type === 'resume' && (
+                            <>
+                                <Button
+                                    size="sm"
+                                    variant={
+                                        rearranging ? 'default' : 'outline'
+                                    }
+                                    aria-pressed={rearranging}
+                                    onClick={() => setRearranging((on) => !on)}
+                                >
+                                    <LayoutPanelLeft />
+                                    <span className="max-sm:sr-only">
+                                        Rearrange
+                                    </span>
+                                </Button>
+                                <AddSectionDialog />
+                            </>
+                        )}
                     </div>
                 </header>
-                <main className="flex flex-1 justify-center overflow-x-auto px-4 py-10 sm:px-16">
-                    <Canvas />
+                <main className="flex flex-1 flex-col items-center gap-8 overflow-x-auto px-4 py-10 sm:px-16 lg:flex-row lg:items-start lg:justify-center">
+                    {rearranging && (
+                        <div className="lg:sticky lg:top-0 lg:max-h-[calc(100svh-8rem)] lg:overflow-y-auto">
+                            <RearrangePanel plan={layout.plan} />
+                        </div>
+                    )}
+                    <Canvas onLayout={setLayout} editable={!rearranging} />
                 </main>
             </div>
             <ConflictDialog open={status === 'conflict'} />
@@ -61,7 +93,13 @@ export default function Edit({ document }: { document: CvDocument }) {
     );
 }
 
-function Canvas() {
+function Canvas({
+    onLayout,
+    editable,
+}: {
+    onLayout: (info: LayoutInfo) => void;
+    editable: boolean;
+}) {
     const bindings = useEditBindings();
     const type = useEditor((state) => state.type);
     const content = useEditor((state) => state.content);
@@ -69,7 +107,7 @@ function Canvas() {
     const templateKey = useEditor((state) => state.template_key);
 
     return (
-        <div className="h-fit shadow-lg">
+        <div className="cv-paper-stack h-fit">
             <EditProvider value={bindings}>
                 <DocumentRenderer
                     document={{
@@ -78,7 +116,8 @@ function Canvas() {
                         content,
                         design,
                     }}
-                    mode={type === 'resume' ? 'edit' : 'view'}
+                    mode={type === 'resume' && editable ? 'edit' : 'view'}
+                    onLayout={onLayout}
                 />
             </EditProvider>
         </div>
