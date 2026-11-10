@@ -27,22 +27,17 @@ export function DocumentCard({
 
     return (
         <article className="group relative flex flex-col overflow-hidden rounded-xl border bg-card">
-            <Link
-                href={href}
-                className="block bg-muted p-4 focus-visible:outline-none"
-                aria-label={`Open ${document.title}`}
-                tabIndex={-1}
-            >
+            <div className="bg-muted p-4">
                 <div className="mx-auto max-w-56 transition-transform group-hover:-translate-y-0.5">
                     <DocumentThumbnail document={document} />
                 </div>
-            </Link>
+            </div>
             <div className="flex items-start gap-2 p-3">
                 <div className="min-w-0 flex-1">
                     <h3 className="truncate font-medium">
                         <Link
                             href={href}
-                            className="rounded-sm focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none"
+                            className="rounded-sm after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none focus-visible:after:ring-[3px] focus-visible:after:ring-ring/50"
                         >
                             {document.title}
                         </Link>
@@ -57,7 +52,7 @@ export function DocumentCard({
                         <Button
                             variant="ghost"
                             size="icon"
-                            className="size-8 shrink-0"
+                            className="relative z-10 size-8 shrink-0"
                             aria-label="Document actions"
                         >
                             <MoreVertical />

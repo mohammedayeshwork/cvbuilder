@@ -12,6 +12,8 @@ import documents from '@/routes/documents';
 import { emptyCoverLetter, emptyDesign, emptyResume } from '@/schema';
 import type { DocumentType, TemplateKey } from '@/schema';
 import { TEMPLATE_CATALOG } from '@/templates/catalog';
+import { getTemplate } from '@/templates/registry';
+import { DocumentPreview } from '@/renderer/DocumentPreview';
 
 export function TemplatePicker({
     type,
@@ -75,14 +77,10 @@ export function TemplatePicker({
                                         'border-primary',
                                 )}
                             >
-                                <div
-                                    aria-hidden
-                                    className="flex aspect-[210/297] w-full items-center justify-center rounded bg-muted text-xs text-muted-foreground"
-                                >
-                                    {template.layout === 'two-column'
-                                        ? 'Two columns'
-                                        : 'One column'}
-                                </div>
+                                <TemplateSample
+                                    templateKey={template.key}
+                                    type={type}
+                                />
                                 <span className="font-medium">
                                     {template.name}
                                 </span>
@@ -95,5 +93,32 @@ export function TemplatePicker({
                 </ul>
             </DialogContent>
         </Dialog>
+    );
+}
+
+/** The template rendered with its sample persona. */
+function TemplateSample({
+    templateKey,
+    type,
+}: {
+    templateKey: TemplateKey;
+    type: DocumentType | null;
+}) {
+    const { sample } = getTemplate(templateKey).thumbnail;
+
+    return (
+        <div className="w-full rounded border">
+            <DocumentPreview
+                document={{
+                    type: 'resume',
+                    template_key: templateKey,
+                    content: sample.content,
+                    design: emptyDesign(),
+                }}
+            />
+            <span className="sr-only">
+                {type === 'cover_letter' ? 'Cover letter' : 'Resume'} preview
+            </span>
+        </div>
     );
 }
