@@ -1,0 +1,78 @@
+/* Bold Header: a colored band across the top, then a single clear column. */
+
+[data-template='bold-header'] .bh-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--rhythm) * 1.5);
+    margin: calc(-1 * var(--margin)) calc(-1 * var(--margin)) 0;
+    padding: calc(var(--margin) * 0.9) var(--margin) calc(var(--rhythm) * 1.3);
+    background: var(--accent);
+    color: #ffffff;
+}
+
+[data-template='bold-header'] .bh-name {
+    font-family: var(--font-heading);
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: calc(var(--rhythm) * 2.4);
+}
+
+[data-template='bold-header'] .bh-title {
+    display: block;
+    color: color-mix(in srgb, #ffffff 85%, var(--accent));
+    font-size: 1.15em;
+    font-weight: 500;
+}
+
+[data-template='bold-header'] .bh-contact {
+    margin-block-start: calc(var(--rhythm) * 0.6);
+    column-gap: 1.2em;
+    color: #ffffff;
+    font-size: 0.92em;
+}
+
+[data-template='bold-header'] .bh-contact .cv-contact-icon {
+    color: color-mix(in srgb, #ffffff 75%, var(--accent));
+}
+
+[data-template='bold-header'] .bh-photo {
+    flex-shrink: 0;
+    width: 28mm;
+    height: 28mm;
+    box-shadow: 0 0 0 1.5pt #ffffff;
+}
+
+[data-template='bold-header'] .cv-placeholder,
+[data-template='bold-header'] .bh-band .cv-editable:empty::before {
+    color: color-mix(in srgb, #ffffff 60%, var(--accent));
+}
+
+[data-template='bold-header'] .cv-section-title {
+    gap: 0.6em;
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+[data-template='bold-header'] .cv-section-title::before {
+    width: 0.55em;
+    height: 0.55em;
+    flex-shrink: 0;
+    border-radius: 1.5pt;
+    background: var(--accent);
+    content: '';
+}
+
+[data-template='bold-header'] .cv-section-title:has(.cv-section-icon)::before {
+    display: none;
+}
+
+[data-template='bold-header'] .cv-entry-title {
+    font-weight: 650;
+}
+
+[data-template='bold-header'] .cv-entry-titles .cv-entry-subtitle {
+    color: var(--accent-ink);
+    font-weight: 500;
+}

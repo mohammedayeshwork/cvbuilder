@@ -1,0 +1,118 @@
+/* Modern Split: a calm main column and a tinted sidebar on the inline end. */
+
+[data-template='modern-split'] {
+    --side-w: 58mm;
+    --col-gap: 8mm;
+    --side-width: var(--side-w);
+    --main-width: minmax(0, 1fr);
+    --column-gap: var(--col-gap);
+}
+
+[data-template='modern-split'] .ms-page {
+    display: flex;
+    flex-direction: column;
+}
+
+[data-template='modern-split'] .ms-header {
+    display: grid;
+    grid-template-columns: auto 1fr var(--side-w);
+    align-items: center;
+    column-gap: calc(var(--rhythm) * 1.2);
+    padding-block-end: calc(var(--rhythm) * 1);
+}
+
+[data-template='modern-split'] .ms-photo {
+    width: 24mm;
+    height: 24mm;
+}
+
+[data-template='modern-split'] .ms-identity {
+    grid-column: 2;
+}
+
+[data-template='modern-split'] .ms-name {
+    font-family: var(--font-heading);
+    font-size: 2.6em;
+    font-weight: 400;
+    line-height: calc(var(--rhythm) * 2.2);
+    letter-spacing: -0.01em;
+}
+
+[data-template='modern-split'] .ms-title {
+    display: block;
+    color: var(--accent);
+    font-size: 0.95em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+[data-template='modern-split'] .ms-contact {
+    grid-column: 3;
+    flex-direction: column;
+    padding-inline-start: calc(var(--col-gap) / 2);
+    color: var(--muted);
+    font-size: 0.92em;
+}
+
+[data-template='modern-split'] .ms-contact li {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+[data-template='modern-split'] .ms-columns {
+    flex: 1;
+}
+
+/* The sidebar tint runs the full height of every page, behind the content. */
+[data-template='modern-split'] .ms-page::before {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: calc(var(--side-w) + var(--margin) + var(--col-gap) / 2);
+    background: var(--tint);
+    content: '';
+}
+
+[data-template='modern-split'] .ms-page > * {
+    position: relative;
+}
+
+[data-template='modern-split'] .cv-section-title {
+    gap: 0.5em;
+    font-size: 1.35em;
+    font-weight: 400;
+}
+
+[data-template='modern-split'] .cv-section-title::after {
+    flex: 1;
+    height: 0.75pt;
+    background: var(--rule);
+    content: '';
+}
+
+[data-template='modern-split'] .ms-side .cv-section-title {
+    font-size: 1.15em;
+}
+
+[data-template='modern-split'] .ms-side .cv-section-title::after {
+    display: none;
+}
+
+[data-template='modern-split'] .ms-side .cv-tag {
+    background: #ffffff;
+}
+
+[data-template='modern-split'] .ms-side .cv-meter,
+[data-template='modern-split'] .ms-side .cv-dots > span:not([data-on]) {
+    background: #ffffff;
+}
+
+[data-template='modern-split'] .ms-side .cv-rated-grid {
+    grid-template-columns: 1fr;
+}
+
+[data-template='modern-split'] .cv-entry-subtitle {
+    color: var(--accent-ink);
+    font-weight: 500;
+}

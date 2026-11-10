@@ -1,0 +1,139 @@
+/*
+ * Timeline: experience, education and volunteering hang off a vertical
+ * rule with a dot per entry; dates sit above each title.
+ */
+
+[data-template='timeline'] {
+    --rail: 5mm;
+}
+
+[data-template='timeline'] .tl-page {
+    border-block-start: 2mm solid var(--accent);
+}
+
+[data-template='timeline'] .tl-header {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--rhythm) * 1.2);
+}
+
+[data-template='timeline'] .tl-photo {
+    width: 25mm;
+    height: 25mm;
+}
+
+[data-template='timeline'] .tl-identity {
+    padding-inline-start: calc(var(--rhythm) * 0.8);
+    border-inline-start: 1.5pt solid var(--accent);
+}
+
+[data-template='timeline'] .tl-name {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    font-weight: 600;
+    line-height: calc(var(--rhythm) * 2.1);
+}
+
+[data-template='timeline'] .tl-title {
+    display: block;
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+[data-template='timeline'] .tl-contact {
+    margin-block-start: calc(var(--rhythm) * 0.5);
+    color: var(--muted);
+    font-size: 0.92em;
+}
+
+[data-template='timeline'] .cv-section-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+[data-template='timeline'] .cv-section-icon {
+    width: 1.3em;
+    height: 1.3em;
+    padding: 0.2em;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #ffffff;
+}
+
+/* The rail: each entry draws its piece of the line and its dot. */
+[data-template='timeline']
+    :is(
+        [data-section='experience'],
+        [data-section='education'],
+        [data-section='volunteer']
+    )
+    .cv-entry {
+    position: relative;
+    padding-inline-start: var(--rail);
+}
+
+[data-template='timeline']
+    :is(
+        [data-section='experience'],
+        [data-section='education'],
+        [data-section='volunteer']
+    )
+    .cv-entry::before {
+    position: absolute;
+    inset-block: calc(var(--rhythm) * 0.5) calc(var(--rhythm) * -0.75);
+    inset-inline-start: calc(var(--rhythm) * 0.22);
+    width: 0.75pt;
+    background: var(--rule);
+    content: '';
+}
+
+[data-template='timeline']
+    :is(
+        [data-section='experience'],
+        [data-section='education'],
+        [data-section='volunteer']
+    )
+    .cv-block:last-child
+    .cv-entry::before {
+    inset-block-end: 0;
+}
+
+[data-template='timeline']
+    :is(
+        [data-section='experience'],
+        [data-section='education'],
+        [data-section='volunteer']
+    )
+    .cv-entry::after {
+    position: absolute;
+    inset-block-start: calc(var(--rhythm) * 0.25);
+    inset-inline-start: 0;
+    width: calc(var(--rhythm) * 0.5);
+    height: calc(var(--rhythm) * 0.5);
+    box-sizing: border-box;
+    border: 1.5pt solid var(--accent);
+    border-radius: 50%;
+    background: #ffffff;
+    content: '';
+}
+
+[data-template='timeline'] .cv-entry[data-layout='timeline'] > .cv-entry-dates {
+    color: var(--accent);
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+[data-template='timeline'] .cv-entry-title {
+    font-family: var(--font-heading);
+    font-size: 1.08em;
+    font-weight: 600;
+}
+
+[data-template='timeline'] .cv-entry-subtitle {
+    color: var(--ink);
+    font-weight: 500;
+}

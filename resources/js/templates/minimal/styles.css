@@ -1,0 +1,95 @@
+/* Minimal: no fills or rules; small-caps titles in a gutter, lots of space. */
+
+[data-template='minimal'] {
+    --gutter: 30mm;
+}
+
+[data-template='minimal'] .mn-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--rhythm);
+    padding-inline-start: var(--gutter);
+}
+
+[data-template='minimal'] .mn-name {
+    font-family: var(--font-heading);
+    font-size: 2.4em;
+    font-variant-caps: all-small-caps;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: calc(var(--rhythm) * 2);
+}
+
+[data-template='minimal'] .mn-title {
+    display: block;
+    color: var(--muted);
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+[data-template='minimal'] .mn-contact {
+    margin-block-start: calc(var(--rhythm) * 0.5);
+    column-gap: 1.4em;
+    color: var(--muted);
+}
+
+[data-template='minimal'] .mn-photo {
+    width: 22mm;
+    height: 22mm;
+}
+
+/* The title hangs in the gutter; the section's blocks fill the rest. */
+[data-template='minimal'] .cv-section {
+    position: relative;
+    padding-inline-start: var(--gutter);
+}
+
+[data-template='minimal'] .cv-keep {
+    min-height: var(--rhythm);
+}
+
+[data-template='minimal'] .cv-section-title {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: calc(var(--gutter) - 4mm);
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.05em;
+    font-weight: 600;
+    line-height: var(--rhythm);
+}
+
+[data-template='minimal'] .cv-section-title .cv-section-icon {
+    display: none;
+}
+
+[data-template='minimal'] .cv-entry-title {
+    font-weight: 600;
+}
+
+[data-template='minimal'] .cv-entry-subtitle {
+    color: var(--ink);
+}
+
+[data-template='minimal'] .cv-tag {
+    padding: 0;
+    background: none;
+    color: var(--ink);
+}
+
+[data-template='minimal'] .cv-tags {
+    column-gap: 0;
+}
+
+[data-template='minimal'] .cv-tag:not(:last-child)::after {
+    color: var(--faint);
+    content: ',\00a0';
+}
+
+[data-template='minimal'] .cv-rich li::marker {
+    color: var(--faint);
+    content: '– ';
+}

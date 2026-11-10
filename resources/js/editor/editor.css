@@ -316,3 +316,9 @@
         0 1px 3px rgb(0 0 0 / 0.08),
         0 8px 24px rgb(0 0 0 / 0.08);
 }
+
+/* Entry controls go into the outer page margin, never over the other column. */
+.cv-columns[data-side='end'] .cv-side .cv-item-controls,
+.cv-columns[data-side='start'] .cv-main .cv-item-controls {
+    inset-inline: calc(100% + 2mm) auto;
+}

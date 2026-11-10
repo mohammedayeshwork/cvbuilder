@@ -154,13 +154,19 @@
 
 .cv-columns {
     display: grid;
-    grid-template-columns: var(--main-width, 65fr) var(--side-width, 35fr);
-    column-gap: calc(var(--rhythm) * 1.5);
+    grid-template-columns: var(--main-width, minmax(0, 65fr)) var(
+            --side-width,
+            minmax(0, 35fr)
+        );
+    column-gap: var(--column-gap, calc(var(--rhythm) * 1.5));
     align-items: start;
 }
 
 .cv-columns[data-side='start'] {
-    grid-template-columns: var(--side-width, 35fr) var(--main-width, 65fr);
+    grid-template-columns: var(--side-width, minmax(0, 35fr)) var(
+            --main-width,
+            minmax(0, 65fr)
+        );
 }
 
 .cv-columns[data-side='start'] > .cv-main {
@@ -411,22 +417,34 @@
 }
 
 .cv-inline-list {
+    --sep: 1.1em;
+
     display: flex;
     flex-wrap: wrap;
+    /* Every item starts with a separator; the list is shifted and clipped so
+       the separator at the start of each line falls outside and is hidden. */
+    margin-inline-start: calc(-1 * var(--sep));
+    clip-path: inset(-4em -4em -4em var(--sep));
+}
+
+.cv-document[dir='rtl'] .cv-inline-list {
+    clip-path: inset(-4em var(--sep) -4em -4em);
 }
 
 .cv-inline-list .cv-rated-label::before {
-    content: ' (';
+    content: '\00a0(';
 }
 
 .cv-inline-list .cv-rated-label::after {
     content: ')';
 }
 
-.cv-inline-list li + li::before {
-    content: '·';
-    margin-inline: 0.45em;
+.cv-inline-list > li::before {
+    display: inline-block;
+    width: var(--sep);
     color: var(--faint);
+    content: '·';
+    text-align: center;
 }
 
 .cv-muted {

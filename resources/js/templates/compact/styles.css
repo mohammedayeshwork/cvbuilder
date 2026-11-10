@@ -1,0 +1,95 @@
+/* Compact: two dense columns and a tight rhythm, to fit a lot on a page. */
+
+[data-template='compact'] {
+    --side-w: 52mm;
+    --col-gap: 6mm;
+    --side-width: var(--side-w);
+    --main-width: minmax(0, 1fr);
+    --column-gap: var(--col-gap);
+}
+
+[data-template='compact'] .cp-page {
+    display: flex;
+    flex-direction: column;
+}
+
+[data-template='compact'] .cp-header {
+    display: flex;
+    align-items: center;
+    gap: var(--rhythm);
+    padding-block-end: calc(var(--rhythm) * 0.6);
+    border-block-end: 1.5pt solid var(--accent);
+}
+
+[data-template='compact'] .cp-photo {
+    width: 18mm;
+    height: 18mm;
+}
+
+[data-template='compact'] .cp-name-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.7em;
+    line-height: calc(var(--rhythm) * 1.8);
+}
+
+[data-template='compact'] .cp-name {
+    font-family: var(--font-heading);
+    font-size: 2.1em;
+    font-weight: 700;
+}
+
+[data-template='compact'] .cp-title {
+    color: var(--accent);
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+[data-template='compact'] .cp-contact {
+    column-gap: 1em;
+    color: var(--muted);
+}
+
+[data-template='compact'] .cp-columns {
+    position: relative;
+    flex: 1;
+}
+
+[data-template='compact'] .cp-columns::before {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: calc(var(--side-w) + var(--col-gap) / 2);
+    width: 0.75pt;
+    background: var(--rule);
+    content: '';
+}
+
+[data-template='compact'] .cv-section-title {
+    margin-block-end: calc(var(--rhythm) * 0.35);
+    font-size: 0.92em;
+    font-weight: 700;
+}
+
+[data-template='compact'] .cv-keep + .cv-block,
+[data-template='compact'] .cv-block + .cv-block {
+    margin-block-start: calc(var(--rhythm) * 0.4);
+}
+
+[data-template='compact'] .cv-entry-subtitle {
+    color: var(--accent-ink);
+}
+
+[data-template='compact'] .cp-side .cv-entry-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+}
+
+[data-template='compact'] .cp-side .cv-rated-grid {
+    grid-template-columns: 1fr;
+}
+
+[data-template='compact'] .cv-tag {
+    font-size: 0.88em;
+}
