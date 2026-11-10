@@ -56,6 +56,63 @@
     background: white;
 }
 
+/* Optional page backgrounds, drawn under the content in the accent color. */
+.cv-page[data-background='dots'] {
+    background-image: radial-gradient(
+        color-mix(in srgb, var(--accent) 22%, transparent) 0.55pt,
+        transparent 0.75pt
+    );
+    background-size: 5mm 5mm;
+}
+
+.cv-page[data-background='grid'] {
+    background-image:
+        linear-gradient(
+            color-mix(in srgb, var(--accent) 8%, transparent) 0.5pt,
+            transparent 0.5pt
+        ),
+        linear-gradient(
+            90deg,
+            color-mix(in srgb, var(--accent) 8%, transparent) 0.5pt,
+            transparent 0.5pt
+        );
+    background-size: 6mm 6mm;
+}
+
+.cv-page[data-background='lines'] {
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0 calc(var(--rhythm) - 0.5pt),
+        color-mix(in srgb, var(--accent) 9%, transparent)
+            calc(var(--rhythm) - 0.5pt) var(--rhythm)
+    );
+    background-position: 0 var(--margin);
+}
+
+.cv-page[data-background='corner'] {
+    background-image:
+        radial-gradient(
+            circle at 100% 0,
+            var(--tint) 0 34mm,
+            transparent 34.2mm
+        ),
+        radial-gradient(
+            circle at 0 100%,
+            var(--tint) 0 18mm,
+            transparent 18.2mm
+        );
+}
+
+.cv-document[dir='rtl'] .cv-page[data-background='corner'] {
+    background-image:
+        radial-gradient(circle at 0 0, var(--tint) 0 34mm, transparent 34.2mm),
+        radial-gradient(
+            circle at 100% 100%,
+            var(--tint) 0 18mm,
+            transparent 18.2mm
+        );
+}
+
 /* Laid-out pages have the exact paper height; the PDF breaks after each. */
 .cv-pages[data-paginated] .cv-page {
     height: var(--page-h);

@@ -9,7 +9,7 @@ export default {
     fontSize: 10,
     lineHeight: 1.35,
     sectionSpacing: 1,
-    pageMargin: 18,
+    pageMargin: 16,
     pageSize: 'A4',
     background: 'none',
     dateFormat: 'MMM YYYY',

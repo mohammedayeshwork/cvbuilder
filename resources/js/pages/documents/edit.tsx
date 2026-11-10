@@ -1,7 +1,14 @@
 import { Head, Link } from '@inertiajs/react';
-import { ArrowLeft, LayoutPanelLeft, Redo2, Undo2 } from 'lucide-react';
+import {
+    ArrowLeft,
+    LayoutPanelLeft,
+    Palette,
+    Redo2,
+    Undo2,
+} from 'lucide-react';
 import { useState } from 'react';
 import { PageCount } from '@/editor/components/PageCount';
+import { DesignPanel } from '@/editor/design/DesignPanel';
 import { RearrangePanel } from '@/editor/rearrange/RearrangePanel';
 import type { LayoutInfo } from '@/renderer/DocumentRenderer';
 import { Button } from '@/components/ui/button';
@@ -36,7 +43,9 @@ export default function Edit({ document }: { document: CvDocument }) {
         document.revision,
     );
     useUndoShortcuts(store);
-    const [rearranging, setRearranging] = useState(false);
+    const [panel, setPanel] = useState<'design' | 'rearrange' | null>(null);
+    const toggle = (name: 'design' | 'rearrange') =>
+        setPanel((open) => (open === name ? null : name));
     const [layout, setLayout] = useState<LayoutInfo>({
         pages: 1,
         plan: [],
@@ -59,15 +68,26 @@ export default function Edit({ document }: { document: CvDocument }) {
                     <PageCount layout={layout} />
                     <div className="ms-auto flex items-center gap-1">
                         <HistoryButtons />
+                        <Button
+                            size="sm"
+                            variant={panel === 'design' ? 'default' : 'outline'}
+                            aria-pressed={panel === 'design'}
+                            onClick={() => toggle('design')}
+                        >
+                            <Palette />
+                            <span className="max-sm:sr-only">Design</span>
+                        </Button>
                         {document.type === 'resume' && (
                             <>
                                 <Button
                                     size="sm"
                                     variant={
-                                        rearranging ? 'default' : 'outline'
+                                        panel === 'rearrange'
+                                            ? 'default'
+                                            : 'outline'
                                     }
-                                    aria-pressed={rearranging}
-                                    onClick={() => setRearranging((on) => !on)}
+                                    aria-pressed={panel === 'rearrange'}
+                                    onClick={() => toggle('rearrange')}
                                 >
                                     <LayoutPanelLeft />
                                     <span className="max-sm:sr-only">
@@ -80,12 +100,19 @@ export default function Edit({ document }: { document: CvDocument }) {
                     </div>
                 </header>
                 <main className="flex flex-1 flex-col items-center gap-8 overflow-x-auto px-4 py-10 sm:px-16 lg:flex-row lg:items-start lg:justify-center">
-                    {rearranging && (
-                        <div className="lg:sticky lg:top-0 lg:max-h-[calc(100svh-8rem)] lg:overflow-y-auto">
-                            <RearrangePanel plan={layout.plan} />
+                    {panel && (
+                        <div className="lg:sticky lg:top-0 lg:max-h-[calc(100svh-8rem)] lg:overflow-y-auto lg:pe-2">
+                            {panel === 'rearrange' ? (
+                                <RearrangePanel plan={layout.plan} />
+                            ) : (
+                                <DesignPanel />
+                            )}
                         </div>
                     )}
-                    <Canvas onLayout={setLayout} editable={!rearranging} />
+                    <Canvas
+                        onLayout={setLayout}
+                        editable={panel !== 'rearrange'}
+                    />
                 </main>
             </div>
             <ConflictDialog open={status === 'conflict'} />
