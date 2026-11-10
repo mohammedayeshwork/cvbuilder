@@ -11,15 +11,15 @@ class DatabaseSeeder extends Seeder
     use WithoutModelEvents;
 
     /**
-     * Seed the application's database.
+     * Seed a demo account (demo@example.com / password) with sample documents.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $user = User::factory()->create([
+            'name' => 'Demo User',
+            'email' => 'demo@example.com',
         ]);
+
+        $this->callWith(SampleDocumentSeeder::class, ['user' => $user]);
     }
 }
