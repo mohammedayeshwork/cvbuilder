@@ -1,27 +1,117 @@
 import { Head } from '@inertiajs/react';
-import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
+import { FileText, Mail, Plus } from 'lucide-react';
+import { useState } from 'react';
+import { DeleteDialog } from '@/components/documents/delete-dialog';
+import { DocumentCard } from '@/components/documents/document-card';
+import { RenameDialog } from '@/components/documents/rename-dialog';
+import { TemplatePicker } from '@/components/documents/template-picker';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { dashboard } from '@/routes';
+import type { DocumentType } from '@/schema';
+import type { CvDocument } from '@/types';
 
-export default function Dashboard() {
+const TABS: {
+    type: DocumentType;
+    label: string;
+    empty: string;
+    icon: typeof FileText;
+}[] = [
+    {
+        type: 'resume',
+        label: 'Resumes',
+        empty: 'You have no resumes yet.',
+        icon: FileText,
+    },
+    {
+        type: 'cover_letter',
+        label: 'Cover letters',
+        empty: 'You have no cover letters yet.',
+        icon: Mail,
+    },
+];
+
+export default function Dashboard({ documents }: { documents: CvDocument[] }) {
+    const [tab, setTab] = useState<DocumentType>('resume');
+    const [picking, setPicking] = useState<DocumentType | null>(null);
+    const [renaming, setRenaming] = useState<CvDocument | null>(null);
+    const [deleting, setDeleting] = useState<CvDocument | null>(null);
+
     return (
         <>
-            <Head title="Dashboard" />
-            <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-                <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
-                    <div className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                        <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                    </div>
+            <Head title="My documents" />
+            <Tabs
+                value={tab}
+                onValueChange={(value) => setTab(value as DocumentType)}
+                className="flex-1 gap-6 p-4 md:p-6"
+            >
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                    <TabsList>
+                        {TABS.map(({ type, label, icon: Icon }) => (
+                            <TabsTrigger key={type} value={type}>
+                                <Icon /> {label}
+                                <span className="text-xs text-muted-foreground">
+                                    {
+                                        documents.filter((d) => d.type === type)
+                                            .length
+                                    }
+                                </span>
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+                    <Button onClick={() => setPicking(tab)}>
+                        <Plus /> New{' '}
+                        {tab === 'resume' ? 'resume' : 'cover letter'}
+                    </Button>
                 </div>
-                <div className="relative min-h-[100vh] flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
-                    <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
-                </div>
-            </div>
+
+                {TABS.map(({ type, empty }) => {
+                    const list = documents.filter((d) => d.type === type);
+
+                    return (
+                        <TabsContent key={type} value={type}>
+                            {list.length === 0 ? (
+                                <div className="flex flex-col items-center gap-3 rounded-xl border border-dashed p-12 text-center">
+                                    <p className="text-muted-foreground">
+                                        {empty}
+                                    </p>
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => setPicking(type)}
+                                    >
+                                        <Plus /> Create one
+                                    </Button>
+                                </div>
+                            ) : (
+                                <ul className="grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-4">
+                                    {list.map((document) => (
+                                        <li key={document.id}>
+                                            <DocumentCard
+                                                document={document}
+                                                onRename={setRenaming}
+                                                onDelete={setDeleting}
+                                            />
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </TabsContent>
+                    );
+                })}
+            </Tabs>
+
+            <TemplatePicker
+                type={picking}
+                onOpenChange={(open) => !open && setPicking(null)}
+            />
+            <RenameDialog
+                document={renaming}
+                onOpenChange={(open) => !open && setRenaming(null)}
+            />
+            <DeleteDialog
+                document={deleting}
+                onOpenChange={(open) => !open && setDeleting(null)}
+            />
         </>
     );
 }
@@ -29,7 +119,7 @@ export default function Dashboard() {
 Dashboard.layout = {
     breadcrumbs: [
         {
-            title: 'Dashboard',
+            title: 'My documents',
             href: dashboard(),
         },
     ],
