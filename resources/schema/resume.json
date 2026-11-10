@@ -143,7 +143,7 @@
                             "url": {
                               "type": "string",
                               "maxLength": 500,
-                              "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                              "pattern": "^(https?:\\/\\/|mailto:)\\S*$|^(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s<>\"]*$"
                             }
                           },
                           "required": [
@@ -366,7 +366,7 @@
                       "link": {
                         "type": "string",
                         "maxLength": 500,
-                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                        "pattern": "^(https?:\\/\\/|mailto:)\\S*$|^(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s<>\"]*$"
                       },
                       "start": {
                         "anyOf": [
@@ -743,7 +743,7 @@
                       "link": {
                         "type": "string",
                         "maxLength": 500,
-                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                        "pattern": "^(https?:\\/\\/|mailto:)\\S*$|^(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s<>\"]*$"
                       },
                       "start": {
                         "anyOf": [
@@ -886,7 +886,7 @@
                       "link": {
                         "type": "string",
                         "maxLength": 500,
-                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                        "pattern": "^(https?:\\/\\/|mailto:)\\S*$|^(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s<>\"]*$"
                       },
                       "description": {
                         "type": "string",
@@ -1351,7 +1351,7 @@
                       "link": {
                         "type": "string",
                         "maxLength": 500,
-                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                        "pattern": "^(https?:\\/\\/|mailto:)\\S*$|^(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s<>\"]*$"
                       },
                       "description": {
                         "type": "string",
@@ -1773,7 +1773,7 @@
                       "link": {
                         "type": "string",
                         "maxLength": 500,
-                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                        "pattern": "^(https?:\\/\\/|mailto:)\\S*$|^(?![A-Za-z][A-Za-z0-9+.-]*:)[^\\s<>\"]*$"
                       },
                       "start": {
                         "anyOf": [

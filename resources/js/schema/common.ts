@@ -19,11 +19,17 @@ export const PartialDate = z
     .regex(/^\d{4}(-(0[1-9]|1[0-2]))?$/)
     .nullable();
 
-/** Empty, http(s)/mailto, or scheme-less ("linkedin.com/in/x"). Never javascript: etc. */
+/**
+ * http(s)/mailto, or anything without a scheme ("linkedin.com/in/x", or a
+ * half-typed "linked"), so autosave never rejects partial input. Other
+ * schemes (javascript:, data:, …) are refused.
+ */
 export const Url = z
     .string()
     .max(500)
-    .regex(/^$|^(https?:\/\/|mailto:)\S+$|^[^\s:/]+\.[^\s:/]+(\/\S*)?$/);
+    .regex(
+        /^(https?:\/\/|mailto:)\S*$|^(?![A-Za-z][A-Za-z0-9+.-]*:)[^\s<>"]*$/,
+    );
 
 export const Column = z.enum(['main', 'side']);
 

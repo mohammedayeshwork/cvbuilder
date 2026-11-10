@@ -70,6 +70,8 @@ describe('document schema', () => {
             'linkedin.com/in/me',
             'mailto:me@example.com',
             '',
+            'linked',
+            'half/typed',
         ]) {
             item.link = link;
             expect(ResumeContent.safeParse(resume).success, link).toBe(true);
