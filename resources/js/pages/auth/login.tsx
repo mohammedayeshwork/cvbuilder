@@ -1,4 +1,5 @@
 import { Form, Head } from '@inertiajs/react';
+import { GoogleButton } from '@/components/google-button';
 import InputError from '@/components/input-error';
 import PasswordInput from '@/components/password-input';
 import TextLink from '@/components/text-link';
@@ -20,6 +21,8 @@ export default function Login({ status, canResetPassword }: Props) {
     return (
         <>
             <Head title="Log in" />
+
+            <GoogleButton />
 
             <Form
                 {...store.form()}
