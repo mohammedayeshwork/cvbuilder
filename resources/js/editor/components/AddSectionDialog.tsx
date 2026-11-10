@@ -13,7 +13,7 @@ import { SECTION_TYPES } from '@/schema';
 import type { ResumeContent, SectionType } from '@/schema';
 import { SECTION_FIELDS } from '@/sections/fields';
 import { SECTION_ICONS } from '@/sections/icons';
-import { templateInfo } from '@/templates/catalog';
+import { getTemplate } from '@/templates/registry';
 import { useApply } from '../actions';
 import { useEditor } from '../context';
 import { addSection } from '../operations';
@@ -32,7 +32,7 @@ export function AddSectionDialog() {
     );
 
     const add = (type: SectionType) => {
-        const template = templateInfo(templateKey);
+        const template = getTemplate(templateKey).info;
         const column =
             template.layout === 'two-column'
                 ? (template.columns[type] ?? 'main')
@@ -46,7 +46,7 @@ export function AddSectionDialog() {
         setOpen(false);
         requestAnimationFrame(() => {
             const section = document.querySelector<HTMLElement>(
-                `[data-section-id="${id}"]`,
+                `.cv-pages [data-section-id="${id}"]`,
             );
             section?.scrollIntoView({ block: 'center', behavior: 'smooth' });
             section

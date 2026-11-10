@@ -86,7 +86,7 @@ export function placeCaretAtEnd(element: HTMLElement): void {
 function focusNextField(from: HTMLElement): void {
     const fields = [
         ...document.querySelectorAll<HTMLElement>(
-            '.cv-document [contenteditable], .cv-document .cv-rich-editable',
+            '.cv-pages :is([contenteditable], .cv-rich-editable)',
         ),
     ];
     const next = fields[fields.indexOf(from) + 1];

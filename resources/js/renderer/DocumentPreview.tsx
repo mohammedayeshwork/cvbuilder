@@ -51,7 +51,11 @@ export function DocumentPreview({
                     className="pointer-events-none absolute start-0 top-0 origin-top-left"
                     style={{ width, height, transform: `scale(${scale})` }}
                 >
-                    <DocumentRenderer document={document} mode="view" />
+                    <DocumentRenderer
+                        document={document}
+                        mode="view"
+                        pageLimit={1}
+                    />
                 </div>
             )}
         </div>

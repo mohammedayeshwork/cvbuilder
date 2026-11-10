@@ -18,7 +18,7 @@ export function useApply() {
 export function focusItem(itemId: string): void {
     requestAnimationFrame(() => {
         const field = document.querySelector<HTMLElement>(
-            `[data-item-id="${itemId}"] [contenteditable], [data-item-id="${itemId}"] .cv-rich-editable`,
+            `.cv-pages [data-item-id="${itemId}"] :is([contenteditable], .cv-rich-editable)`,
         );
         field?.focus();
         field?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });

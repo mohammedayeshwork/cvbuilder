@@ -56,6 +56,41 @@
     background: white;
 }
 
+/* Laid-out pages have the exact paper height; the PDF breaks after each. */
+.cv-pages[data-paginated] .cv-page {
+    height: var(--page-h);
+}
+
+.cv-pages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--page-gap, 0);
+}
+
+/* The hidden full-length copy that pagination measures. */
+.cv-document[data-measure] {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline-start: -100000px;
+    visibility: hidden;
+    pointer-events: none;
+    contain: layout style;
+}
+
+@media print {
+    .cv-pages {
+        gap: 0;
+    }
+
+    .cv-page {
+        break-after: page;
+    }
+
+    .cv-page:last-child {
+        break-after: auto;
+    }
+}
+
 .cv-document[data-mode='edit'] .cv-page {
     overflow: visible;
 }

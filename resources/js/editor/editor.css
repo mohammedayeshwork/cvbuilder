@@ -304,3 +304,15 @@
     outline: 1.5px solid var(--edit);
     outline-offset: 1.5pt;
 }
+
+/* ------------------------------------------------- pages in the editor */
+
+.cv-paper-stack .cv-pages {
+    --page-gap: 10mm;
+}
+
+.cv-paper-stack .cv-page {
+    box-shadow:
+        0 1px 3px rgb(0 0 0 / 0.08),
+        0 8px 24px rgb(0 0 0 / 0.08);
+}
