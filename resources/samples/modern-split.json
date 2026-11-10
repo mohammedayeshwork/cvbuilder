@@ -1,0 +1,278 @@
+{
+  "title": "Priya Raman — Product Designer",
+  "template_key": "modern-split",
+  "content": {
+    "version": 1,
+    "sections": [
+      {
+        "id": "msp-0001",
+        "type": "header",
+        "title": "Header",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showPhoto": true,
+          "showTitle": true,
+          "showLinks": true,
+          "showLocation": true
+        },
+        "items": [
+          {
+            "id": "msp-0002",
+            "name": "Priya Raman",
+            "title": "Senior Product Designer",
+            "phone": "+1 415 555 0198",
+            "email": "priya.raman@example.com",
+            "location": "San Francisco, CA",
+            "links": [
+              {
+                "id": "msp-0003",
+                "label": "priyaraman.design",
+                "url": "https://priyaraman.design"
+              },
+              {
+                "id": "msp-0004",
+                "label": "dribbble.com/priyar",
+                "url": "https://dribbble.com/priyar"
+              }
+            ],
+            "photo": null
+          }
+        ]
+      },
+      {
+        "id": "msp-0005",
+        "type": "summary",
+        "title": "Summary",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {},
+        "items": [
+          {
+            "id": "msp-0006",
+            "text": "<p>Product designer with seven years of experience shipping B2B and fintech products. I like turning messy workflows into calm interfaces, and I back design decisions with research. Currently leading design for a payments platform used by 30,000 small businesses.</p>"
+          }
+        ]
+      },
+      {
+        "id": "msp-0007",
+        "type": "experience",
+        "title": "Experience",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "msp-0008",
+            "role": "Senior Product Designer",
+            "company": "Ledgerly",
+            "location": "San Francisco, CA",
+            "link": "ledgerly.example.com",
+            "start": "2022-02",
+            "end": null,
+            "current": true,
+            "description": "<ul><li>Lead designer for invoicing and payouts, working with 3 product squads.</li><li>Redesigned onboarding, which raised activation from 41% to 63% in two quarters.</li><li>Started and maintain the Ledgerly design system (180 components, used by 40 engineers).</li><li>Run monthly usability sessions with customers and share the findings with leadership.</li></ul>"
+          },
+          {
+            "id": "msp-0009",
+            "role": "Product Designer",
+            "company": "Fieldnote",
+            "location": "Oakland, CA",
+            "link": "",
+            "start": "2019-06",
+            "end": "2022-01",
+            "current": false,
+            "description": "<ul><li>Designed the mobile app for field technicians, which reached a 4.8 rating in the App Store.</li><li>Introduced design critiques and a shared research repository for the product team.</li><li>Worked with engineering to cut the time from first sketch to shipped feature by 30%.</li></ul>"
+          },
+          {
+            "id": "msp-0010",
+            "role": "UX Designer",
+            "company": "Brightpath Agency",
+            "location": "Austin, TX",
+            "link": "",
+            "start": "2017-08",
+            "end": "2019-05",
+            "current": false,
+            "description": "<ul><li>Delivered websites and apps for 14 clients in health care, education and retail.</li><li>Ran discovery workshops and turned their output into wireframes and prototypes.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "msp-0011",
+        "type": "projects",
+        "title": "Projects",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showRole": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "msp-0012",
+            "name": "Open Accessibility Checklist",
+            "role": "Creator",
+            "link": "github.com/priyar/a11y-checklist",
+            "start": "2021",
+            "end": null,
+            "description": "<p>A free checklist for designers that maps WCAG 2.2 criteria to design decisions. Used by more than 2,000 people each month.</p>"
+          }
+        ]
+      },
+      {
+        "id": "msp-0013",
+        "type": "education",
+        "title": "Education",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showGrade": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "msp-0014",
+            "degree": "BFA Interaction Design",
+            "institution": "California College of the Arts",
+            "location": "San Francisco, CA",
+            "start": "2013",
+            "end": "2017",
+            "current": false,
+            "grade": "",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "msp-0015",
+        "type": "skills",
+        "title": "Skills",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "grouped"
+        },
+        "items": [
+          {
+            "id": "msp-0016",
+            "name": "Design",
+            "level": 5,
+            "keywords": [
+              "Figma",
+              "Prototyping",
+              "Design systems",
+              "Interaction design"
+            ]
+          },
+          {
+            "id": "msp-0017",
+            "name": "Research",
+            "level": 4,
+            "keywords": [
+              "Usability testing",
+              "Interviews",
+              "Journey mapping"
+            ]
+          },
+          {
+            "id": "msp-0018",
+            "name": "Front end",
+            "level": 3,
+            "keywords": [
+              "HTML",
+              "CSS",
+              "React basics"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "msp-0019",
+        "type": "languages",
+        "title": "Languages",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "dots"
+        },
+        "items": [
+          {
+            "id": "msp-0020",
+            "name": "English",
+            "proficiency": "fluent"
+          },
+          {
+            "id": "msp-0021",
+            "name": "Tamil",
+            "proficiency": "native"
+          },
+          {
+            "id": "msp-0022",
+            "name": "Spanish",
+            "proficiency": "intermediate"
+          }
+        ]
+      },
+      {
+        "id": "msp-0023",
+        "type": "awards",
+        "title": "Awards",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDate": true,
+          "showIssuer": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "msp-0024",
+            "title": "Fintech Design Award, Finalist",
+            "issuer": "UX Collective",
+            "date": "2023",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "msp-0025",
+        "type": "interests",
+        "title": "Interests",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "showKeywords": false
+        },
+        "items": [
+          {
+            "id": "msp-0026",
+            "name": "Ceramics",
+            "keywords": []
+          },
+          {
+            "id": "msp-0027",
+            "name": "Trail running",
+            "keywords": []
+          },
+          {
+            "id": "msp-0028",
+            "name": "Type design",
+            "keywords": []
+          }
+        ]
+      }
+    ]
+  },
+  "design": {
+    "version": 1
+  }
+}

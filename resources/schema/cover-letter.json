@@ -1,0 +1,162 @@
+{
+  "$id": "https://cvbuilder.local/schema/cover-letter.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number",
+      "const": 1
+    },
+    "sender": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "email": {
+          "type": "string",
+          "maxLength": 254
+        },
+        "location": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "links": {
+          "maxItems": 10,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{6,21}$"
+              },
+              "label": {
+                "type": "string",
+                "maxLength": 60
+              },
+              "url": {
+                "type": "string",
+                "maxLength": 500,
+                "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+              }
+            },
+            "required": [
+              "id",
+              "label",
+              "url"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "photo": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "src": {
+                  "type": "string",
+                  "maxLength": 280000,
+                  "pattern": "^data:image\\/(webp|jpeg|png);base64,[A-Za-z0-9+/]+=*$"
+                },
+                "shape": {
+                  "type": "string",
+                  "enum": [
+                    "round",
+                    "square"
+                  ]
+                }
+              },
+              "required": [
+                "src",
+                "shape"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "phone",
+        "email",
+        "location",
+        "links",
+        "photo"
+      ],
+      "additionalProperties": false
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "recipient": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "company": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "address": {
+          "type": "string",
+          "maxLength": 400
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "company",
+        "address"
+      ],
+      "additionalProperties": false
+    },
+    "greeting": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "closing": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "signature": {
+      "type": "string",
+      "maxLength": 120
+    }
+  },
+  "required": [
+    "version",
+    "sender",
+    "date",
+    "recipient",
+    "greeting",
+    "body",
+    "closing",
+    "signature"
+  ],
+  "additionalProperties": false
+}

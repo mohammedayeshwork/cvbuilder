@@ -1,0 +1,235 @@
+{
+  "title": "Hana Sato — Software Engineer",
+  "template_key": "minimal",
+  "content": {
+    "version": 1,
+    "sections": [
+      {
+        "id": "min-0001",
+        "type": "header",
+        "title": "Header",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showPhoto": true,
+          "showTitle": true,
+          "showLinks": true,
+          "showLocation": true
+        },
+        "items": [
+          {
+            "id": "min-0002",
+            "name": "Hana Sato",
+            "title": "Backend Software Engineer",
+            "phone": "+81 90 5550 1123",
+            "email": "hana.sato@example.com",
+            "location": "Tokyo, Japan",
+            "links": [
+              {
+                "id": "min-0003",
+                "label": "github.com/hanasato",
+                "url": "https://github.com/hanasato"
+              },
+              {
+                "id": "min-0004",
+                "label": "hanasato.dev",
+                "url": "https://hanasato.dev"
+              }
+            ],
+            "photo": null
+          }
+        ]
+      },
+      {
+        "id": "min-0005",
+        "type": "summary",
+        "title": "Summary",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {},
+        "items": [
+          {
+            "id": "min-0006",
+            "text": "<p>Backend engineer with six years of experience in distributed systems, payments and developer tooling. I care about reliable services, readable code and good on-call hygiene. Comfortable working in English and Japanese teams.</p>"
+          }
+        ]
+      },
+      {
+        "id": "min-0007",
+        "type": "experience",
+        "title": "Experience",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "min-0008",
+            "role": "Senior Software Engineer",
+            "company": "Kumo Pay",
+            "location": "Tokyo",
+            "link": "",
+            "start": "2022-04",
+            "end": null,
+            "current": true,
+            "description": "<ul><li>Tech lead for the settlement service (Go, PostgreSQL, Kafka) processing ¥40bn a month.</li><li>Designed idempotent payout pipeline that removed duplicate transfers entirely.</li><li>Cut p99 API latency from 480 ms to 120 ms by redesigning the ledger read path.</li><li>Mentor 3 engineers and run the backend guild’s design review.</li></ul>"
+          },
+          {
+            "id": "min-0009",
+            "role": "Software Engineer",
+            "company": "Tsubame Logistics",
+            "location": "Osaka",
+            "link": "",
+            "start": "2019-04",
+            "end": "2022-03",
+            "current": false,
+            "description": "<ul><li>Built route-planning APIs in Python and Rust serving 1,200 delivery drivers.</li><li>Moved the deployment pipeline to Kubernetes and reduced release time from 45 to 8 minutes.</li><li>Wrote the internal guide to incident reviews that is still used today.</li></ul>"
+          },
+          {
+            "id": "min-0010",
+            "role": "Junior Developer",
+            "company": "Studio Hoshi",
+            "location": "Osaka",
+            "link": "",
+            "start": "2018-04",
+            "end": "2019-03",
+            "current": false,
+            "description": "<ul><li>Maintained PHP and Laravel sites for small business clients.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "min-0011",
+        "type": "projects",
+        "title": "Projects",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showRole": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "min-0012",
+            "name": "pgdiff-lite",
+            "role": "Maintainer",
+            "link": "github.com/hanasato/pgdiff-lite",
+            "start": "2020",
+            "end": null,
+            "description": "<p>Open source tool that compares PostgreSQL schemas. 1.4k stars on GitHub.</p>"
+          },
+          {
+            "id": "min-0013",
+            "name": "Talk: “Exactly-once is a lie”",
+            "role": "Speaker",
+            "link": "",
+            "start": "2023-10",
+            "end": null,
+            "description": "<p>Go Conference Tokyo 2023. About designing payment systems around retries.</p>"
+          }
+        ]
+      },
+      {
+        "id": "min-0014",
+        "type": "education",
+        "title": "Education",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showGrade": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "min-0015",
+            "degree": "BEng Computer Science",
+            "institution": "Osaka University",
+            "location": "Osaka",
+            "start": "2014",
+            "end": "2018",
+            "current": false,
+            "grade": "",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "min-0016",
+        "type": "skills",
+        "title": "Skills",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "grouped"
+        },
+        "items": [
+          {
+            "id": "min-0017",
+            "name": "Languages",
+            "level": 5,
+            "keywords": [
+              "Go",
+              "Python",
+              "Rust",
+              "SQL"
+            ]
+          },
+          {
+            "id": "min-0018",
+            "name": "Infrastructure",
+            "level": 4,
+            "keywords": [
+              "Kubernetes",
+              "Terraform",
+              "AWS",
+              "GCP"
+            ]
+          },
+          {
+            "id": "min-0019",
+            "name": "Data",
+            "level": 4,
+            "keywords": [
+              "PostgreSQL",
+              "Kafka",
+              "Redis"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "min-0020",
+        "type": "languages",
+        "title": "Languages",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "text"
+        },
+        "items": [
+          {
+            "id": "min-0021",
+            "name": "Japanese",
+            "proficiency": "native"
+          },
+          {
+            "id": "min-0022",
+            "name": "English",
+            "proficiency": "fluent"
+          }
+        ]
+      }
+    ]
+  },
+  "design": {
+    "version": 1
+  }
+}

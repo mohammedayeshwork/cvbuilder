@@ -1,0 +1,308 @@
+{
+  "title": "Lena Fischer — Data Engineer",
+  "template_key": "compact",
+  "content": {
+    "version": 1,
+    "sections": [
+      {
+        "id": "cmp-0001",
+        "type": "header",
+        "title": "Header",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showPhoto": true,
+          "showTitle": true,
+          "showLinks": true,
+          "showLocation": true
+        },
+        "items": [
+          {
+            "id": "cmp-0002",
+            "name": "Lena Fischer",
+            "title": "Data Engineer",
+            "phone": "+49 30 5550 7788",
+            "email": "lena.fischer@example.com",
+            "location": "Berlin, Germany",
+            "links": [
+              {
+                "id": "cmp-0003",
+                "label": "github.com/lenafischer",
+                "url": "https://github.com/lenafischer"
+              },
+              {
+                "id": "cmp-0004",
+                "label": "linkedin.com/in/lenafischer",
+                "url": "https://linkedin.com/in/lenafischer"
+              }
+            ],
+            "photo": null
+          }
+        ]
+      },
+      {
+        "id": "cmp-0005",
+        "type": "summary",
+        "title": "Summary",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {},
+        "items": [
+          {
+            "id": "cmp-0006",
+            "text": "<p>Data engineer with five years of building batch and streaming pipelines for e-commerce and mobility companies. I keep data platforms boring, cheap and well documented, so analysts can trust what they query.</p>"
+          }
+        ]
+      },
+      {
+        "id": "cmp-0007",
+        "type": "experience",
+        "title": "Experience",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "cmp-0008",
+            "role": "Data Engineer",
+            "company": "Velo Mobility",
+            "location": "Berlin",
+            "link": "",
+            "start": "2022-01",
+            "end": null,
+            "current": true,
+            "description": "<ul><li>Own the event pipeline for 2m daily trips (Kafka, Flink, BigQuery).</li><li>Cut warehouse costs by 46% through partitioning and dbt model cleanup.</li><li>Introduced data contracts with the app teams; schema-related incidents fell from 9 to 1 per quarter.</li></ul>"
+          },
+          {
+            "id": "cmp-0009",
+            "role": "Junior Data Engineer",
+            "company": "Marktplatz24",
+            "location": "Hamburg",
+            "link": "",
+            "start": "2019-08",
+            "end": "2021-12",
+            "current": false,
+            "description": "<ul><li>Migrated 140 cron jobs to Airflow with alerting and retries.</li><li>Built the product catalogue sync between PostgreSQL and Elasticsearch.</li></ul>"
+          },
+          {
+            "id": "cmp-0010",
+            "role": "Working Student, Analytics",
+            "company": "Marktplatz24",
+            "location": "Hamburg",
+            "link": "",
+            "start": "2018-04",
+            "end": "2019-07",
+            "current": false,
+            "description": "<ul><li>Built weekly sales dashboards in Tableau for the category teams.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "cmp-0011",
+        "type": "projects",
+        "title": "Projects",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showRole": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "cmp-0012",
+            "name": "Berlin Bike Count Dashboard",
+            "role": "Author",
+            "link": "lenafischer.github.io/bikecount",
+            "start": "2023",
+            "end": null,
+            "description": "<p>Open data project visualising the city’s bike counter data, updated daily.</p>"
+          }
+        ]
+      },
+      {
+        "id": "cmp-0013",
+        "type": "education",
+        "title": "Education",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": false,
+          "showGrade": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "cmp-0014",
+            "degree": "MSc Computer Science",
+            "institution": "TU Hamburg",
+            "location": "Hamburg",
+            "start": "2017",
+            "end": "2019",
+            "current": false,
+            "grade": "",
+            "description": ""
+          },
+          {
+            "id": "cmp-0015",
+            "degree": "BSc Mathematics",
+            "institution": "University of Leipzig",
+            "location": "Leipzig",
+            "start": "2014",
+            "end": "2017",
+            "current": false,
+            "grade": "",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "cmp-0016",
+        "type": "skills",
+        "title": "Skills",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "tags"
+        },
+        "items": [
+          {
+            "id": "cmp-0017",
+            "name": "Python",
+            "level": 5,
+            "keywords": []
+          },
+          {
+            "id": "cmp-0018",
+            "name": "SQL",
+            "level": 5,
+            "keywords": []
+          },
+          {
+            "id": "cmp-0019",
+            "name": "dbt",
+            "level": 4,
+            "keywords": []
+          },
+          {
+            "id": "cmp-0020",
+            "name": "Airflow",
+            "level": 4,
+            "keywords": []
+          },
+          {
+            "id": "cmp-0021",
+            "name": "Kafka",
+            "level": 3,
+            "keywords": []
+          },
+          {
+            "id": "cmp-0022",
+            "name": "Flink",
+            "level": 3,
+            "keywords": []
+          },
+          {
+            "id": "cmp-0023",
+            "name": "BigQuery",
+            "level": 4,
+            "keywords": []
+          },
+          {
+            "id": "cmp-0024",
+            "name": "Terraform",
+            "level": 3,
+            "keywords": []
+          }
+        ]
+      },
+      {
+        "id": "cmp-0025",
+        "type": "certifications",
+        "title": "Certifications",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDate": true,
+          "showIssuer": true,
+          "showLink": false,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "cmp-0026",
+            "name": "Google Cloud Professional Data Engineer",
+            "issuer": "Google Cloud",
+            "date": "2022-06",
+            "link": "",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "cmp-0027",
+        "type": "languages",
+        "title": "Languages",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "text"
+        },
+        "items": [
+          {
+            "id": "cmp-0028",
+            "name": "German",
+            "proficiency": "native"
+          },
+          {
+            "id": "cmp-0029",
+            "name": "English",
+            "proficiency": "fluent"
+          },
+          {
+            "id": "cmp-0030",
+            "name": "Polish",
+            "proficiency": "basic"
+          }
+        ]
+      },
+      {
+        "id": "cmp-0031",
+        "type": "interests",
+        "title": "Interests",
+        "column": "side",
+        "pageBreakBefore": false,
+        "settings": {
+          "showKeywords": false
+        },
+        "items": [
+          {
+            "id": "cmp-0032",
+            "name": "Cycling",
+            "keywords": []
+          },
+          {
+            "id": "cmp-0033",
+            "name": "Bouldering",
+            "keywords": []
+          },
+          {
+            "id": "cmp-0034",
+            "name": "Open data",
+            "keywords": []
+          }
+        ]
+      }
+    ]
+  },
+  "design": {
+    "version": 1
+  }
+}

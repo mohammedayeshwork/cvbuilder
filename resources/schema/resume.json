@@ -1,0 +1,1840 @@
+{
+  "$id": "https://cvbuilder.local/schema/resume.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number",
+      "const": 1
+    },
+    "sections": {
+      "minItems": 1,
+      "maxItems": 40,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "header",
+              "summary",
+              "experience",
+              "education",
+              "skills",
+              "projects",
+              "certifications",
+              "languages",
+              "awards",
+              "volunteer",
+              "publications",
+              "courses",
+              "interests",
+              "references",
+              "custom"
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "header"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "header"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showPhoto": {
+                      "type": "boolean"
+                    },
+                    "showTitle": {
+                      "type": "boolean"
+                    },
+                    "showLinks": {
+                      "type": "boolean"
+                    },
+                    "showLocation": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showPhoto",
+                    "showTitle",
+                    "showLinks",
+                    "showLocation"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "minItems": 1,
+                  "maxItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 120
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 160
+                      },
+                      "phone": {
+                        "type": "string",
+                        "maxLength": 60
+                      },
+                      "email": {
+                        "type": "string",
+                        "maxLength": 254
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 160
+                      },
+                      "links": {
+                        "maxItems": 10,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                            },
+                            "label": {
+                              "type": "string",
+                              "maxLength": 60
+                            },
+                            "url": {
+                              "type": "string",
+                              "maxLength": 500,
+                              "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "label",
+                            "url"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "photo": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "src": {
+                                "type": "string",
+                                "maxLength": 280000,
+                                "pattern": "^data:image\\/(webp|jpeg|png);base64,[A-Za-z0-9+/]+=*$"
+                              },
+                              "shape": {
+                                "type": "string",
+                                "enum": [
+                                  "round",
+                                  "square"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "src",
+                              "shape"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "title",
+                      "phone",
+                      "email",
+                      "location",
+                      "links",
+                      "photo"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "summary"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "summary"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": false
+                },
+                "items": {
+                  "minItems": 1,
+                  "maxItems": 1,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "text": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "text"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "experience"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "experience"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDates": {
+                      "type": "boolean"
+                    },
+                    "showLocation": {
+                      "type": "boolean"
+                    },
+                    "showLink": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDates",
+                    "showLocation",
+                    "showLink",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "company": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "link": {
+                        "type": "string",
+                        "maxLength": 500,
+                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                      },
+                      "start": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "current": {
+                        "type": "boolean"
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "role",
+                      "company",
+                      "location",
+                      "link",
+                      "start",
+                      "end",
+                      "current",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "education"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "education"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDates": {
+                      "type": "boolean"
+                    },
+                    "showLocation": {
+                      "type": "boolean"
+                    },
+                    "showGrade": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDates",
+                    "showLocation",
+                    "showGrade",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "degree": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "institution": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "start": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "current": {
+                        "type": "boolean"
+                      },
+                      "grade": {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "degree",
+                      "institution",
+                      "location",
+                      "start",
+                      "end",
+                      "current",
+                      "grade",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "skills"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "skills"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "display": {
+                      "type": "string",
+                      "enum": [
+                        "tags",
+                        "grouped",
+                        "bars"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "display"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      "level": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 5
+                      },
+                      "keywords": {
+                        "maxItems": 30,
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 60
+                        }
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "level",
+                      "keywords"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "projects"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "projects"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDates": {
+                      "type": "boolean"
+                    },
+                    "showRole": {
+                      "type": "boolean"
+                    },
+                    "showLink": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDates",
+                    "showRole",
+                    "showLink",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "role": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "link": {
+                        "type": "string",
+                        "maxLength": 500,
+                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                      },
+                      "start": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "role",
+                      "link",
+                      "start",
+                      "end",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "certifications"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "certifications"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDate": {
+                      "type": "boolean"
+                    },
+                    "showIssuer": {
+                      "type": "boolean"
+                    },
+                    "showLink": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDate",
+                    "showIssuer",
+                    "showLink",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "issuer": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "date": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "link": {
+                        "type": "string",
+                        "maxLength": 500,
+                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "issuer",
+                      "date",
+                      "link",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "languages"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "languages"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "display": {
+                      "type": "string",
+                      "enum": [
+                        "text",
+                        "dots",
+                        "bars"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "display"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      "proficiency": {
+                        "type": "string",
+                        "enum": [
+                          "native",
+                          "fluent",
+                          "advanced",
+                          "intermediate",
+                          "basic"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "proficiency"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "awards"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "awards"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDate": {
+                      "type": "boolean"
+                    },
+                    "showIssuer": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDate",
+                    "showIssuer",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "issuer": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "date": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "issuer",
+                      "date",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "volunteer"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "volunteer"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDates": {
+                      "type": "boolean"
+                    },
+                    "showLocation": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDates",
+                    "showLocation",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "role": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "organization": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "start": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "current": {
+                        "type": "boolean"
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "role",
+                      "organization",
+                      "location",
+                      "start",
+                      "end",
+                      "current",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "publications"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "publications"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDate": {
+                      "type": "boolean"
+                    },
+                    "showPublisher": {
+                      "type": "boolean"
+                    },
+                    "showAuthors": {
+                      "type": "boolean"
+                    },
+                    "showLink": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDate",
+                    "showPublisher",
+                    "showAuthors",
+                    "showLink",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 300
+                      },
+                      "publisher": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "authors": {
+                        "type": "string",
+                        "maxLength": 300
+                      },
+                      "date": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "link": {
+                        "type": "string",
+                        "maxLength": 500,
+                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "publisher",
+                      "authors",
+                      "date",
+                      "link",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "courses"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "courses"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDate": {
+                      "type": "boolean"
+                    },
+                    "showInstitution": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDate",
+                    "showInstitution",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "institution": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "date": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "institution",
+                      "date",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "interests"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "interests"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showKeywords": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showKeywords"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      "keywords": {
+                        "maxItems": 30,
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 60
+                        }
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "keywords"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "references"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "references"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "onRequestOnly": {
+                      "type": "boolean"
+                    },
+                    "showContact": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "onRequestOnly",
+                    "showContact"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 120
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "company": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "email": {
+                        "type": "string",
+                        "maxLength": 254
+                      },
+                      "phone": {
+                        "type": "string",
+                        "maxLength": 60
+                      },
+                      "relationship": {
+                        "type": "string",
+                        "maxLength": 200
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "title",
+                      "company",
+                      "email",
+                      "phone",
+                      "relationship"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "custom"
+                }
+              }
+            },
+            "then": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                },
+                "type": {
+                  "type": "string",
+                  "const": "custom"
+                },
+                "title": {
+                  "type": "string",
+                  "maxLength": 80
+                },
+                "column": {
+                  "type": "string",
+                  "enum": [
+                    "main",
+                    "side"
+                  ]
+                },
+                "pageBreakBefore": {
+                  "type": "boolean"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "showDates": {
+                      "type": "boolean"
+                    },
+                    "showLocation": {
+                      "type": "boolean"
+                    },
+                    "showLink": {
+                      "type": "boolean"
+                    },
+                    "showDescription": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "showDates",
+                    "showLocation",
+                    "showLink",
+                    "showDescription"
+                  ],
+                  "additionalProperties": false
+                },
+                "items": {
+                  "maxItems": 60,
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{6,21}$"
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "subtitle": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "location": {
+                        "type": "string",
+                        "maxLength": 200
+                      },
+                      "link": {
+                        "type": "string",
+                        "maxLength": 500,
+                        "pattern": "^$|^(https?:\\/\\/|mailto:)\\S+$|^[^\\s:/]+\\.[^\\s:/]+(\\/\\S*)?$"
+                      },
+                      "start": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "end": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "pattern": "^\\d{4}(-(0[1-9]|1[0-2]))?$"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "description": {
+                        "type": "string",
+                        "maxLength": 20000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "title",
+                      "subtitle",
+                      "location",
+                      "link",
+                      "start",
+                      "end",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "title",
+                "column",
+                "pageBreakBefore",
+                "settings",
+                "items"
+              ],
+              "additionalProperties": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "sections"
+  ],
+  "additionalProperties": false
+}

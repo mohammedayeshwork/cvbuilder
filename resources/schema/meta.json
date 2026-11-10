@@ -1,0 +1,36 @@
+{
+  "documentTypes": [
+    "resume",
+    "cover_letter"
+  ],
+  "templates": [
+    "classic",
+    "modern-split",
+    "bold-header",
+    "minimal",
+    "timeline",
+    "compact"
+  ],
+  "sectionTypes": [
+    "header",
+    "summary",
+    "experience",
+    "education",
+    "skills",
+    "projects",
+    "certifications",
+    "languages",
+    "awards",
+    "volunteer",
+    "publications",
+    "courses",
+    "interests",
+    "references",
+    "custom"
+  ],
+  "richTextKeys": [
+    "body",
+    "description",
+    "text"
+  ]
+}

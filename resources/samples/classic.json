@@ -1,0 +1,243 @@
+{
+  "title": "Eleanor Whitfield — Senior Financial Analyst",
+  "template_key": "classic",
+  "content": {
+    "version": 1,
+    "sections": [
+      {
+        "id": "cls-0001",
+        "type": "header",
+        "title": "Header",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showPhoto": true,
+          "showTitle": true,
+          "showLinks": true,
+          "showLocation": true
+        },
+        "items": [
+          {
+            "id": "cls-0002",
+            "name": "Eleanor Whitfield",
+            "title": "Senior Financial Analyst",
+            "phone": "+44 20 7946 0321",
+            "email": "eleanor.whitfield@example.com",
+            "location": "London, United Kingdom",
+            "links": [
+              {
+                "id": "cls-0003",
+                "label": "linkedin.com/in/ewhitfield",
+                "url": "https://linkedin.com/in/ewhitfield"
+              }
+            ],
+            "photo": null
+          }
+        ]
+      },
+      {
+        "id": "cls-0004",
+        "type": "summary",
+        "title": "Summary",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {},
+        "items": [
+          {
+            "id": "cls-0005",
+            "text": "<p>Chartered financial analyst with nine years in corporate finance and FP&amp;A across retail and logistics. I build forecasting models that management actually uses, and I explain the numbers in plain language. Led the budget process for a £1.2bn division and cut the monthly close from eight working days to four.</p>"
+          }
+        ]
+      },
+      {
+        "id": "cls-0006",
+        "type": "experience",
+        "title": "Experience",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "cls-0007",
+            "role": "Senior Financial Analyst",
+            "company": "Harrow & Lane Retail Group",
+            "location": "London",
+            "link": "",
+            "start": "2021-03",
+            "end": null,
+            "current": true,
+            "description": "<ul><li>Own the rolling 18-month forecast for the UK stores division (£1.2bn revenue, 240 sites).</li><li>Rebuilt the store-level P&amp;L model in Power BI, which replaced 31 spreadsheets and saves the team about 40 hours a month.</li><li>Shortened the month-end close from 8 to 4 working days by automating accrual reconciliations.</li><li>Prepare the quarterly board pack and present variance analysis to the CFO.</li></ul>"
+          },
+          {
+            "id": "cls-0008",
+            "role": "Financial Analyst",
+            "company": "Northgate Logistics",
+            "location": "Manchester",
+            "link": "",
+            "start": "2018-01",
+            "end": "2021-02",
+            "current": false,
+            "description": "<ul><li>Built the capital expenditure appraisal model used for a £45m warehouse automation programme.</li><li>Partnered with operations on cost-to-serve analysis, which identified £3.1m of annual savings.</li><li>Introduced driver-based budgeting for fleet costs and cut forecast error from 9% to 3%.</li></ul>"
+          },
+          {
+            "id": "cls-0009",
+            "role": "Graduate Analyst",
+            "company": "Pembroke Advisory",
+            "location": "Leeds",
+            "link": "",
+            "start": "2015-09",
+            "end": "2017-12",
+            "current": false,
+            "description": "<ul><li>Supported due diligence on 12 mid-market acquisitions in the consumer sector.</li><li>Prepared three-statement models and sensitivity analyses for client pitch books.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "cls-0010",
+        "type": "education",
+        "title": "Education",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showGrade": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "cls-0011",
+            "degree": "MSc Finance",
+            "institution": "London School of Economics",
+            "location": "London",
+            "start": "2014",
+            "end": "2015",
+            "current": false,
+            "grade": "Distinction",
+            "description": ""
+          },
+          {
+            "id": "cls-0012",
+            "degree": "BSc Economics",
+            "institution": "University of Bristol",
+            "location": "Bristol",
+            "start": "2011",
+            "end": "2014",
+            "current": false,
+            "grade": "First Class Honours",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "cls-0013",
+        "type": "certifications",
+        "title": "Certifications",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDate": true,
+          "showIssuer": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "cls-0014",
+            "name": "Chartered Financial Analyst (CFA)",
+            "issuer": "CFA Institute",
+            "date": "2019",
+            "link": "",
+            "description": ""
+          },
+          {
+            "id": "cls-0015",
+            "name": "Financial Modelling & Valuation Analyst",
+            "issuer": "Corporate Finance Institute",
+            "date": "2017",
+            "link": "",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "cls-0016",
+        "type": "skills",
+        "title": "Skills",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "tags"
+        },
+        "items": [
+          {
+            "id": "cls-0017",
+            "name": "Financial modelling",
+            "level": 5,
+            "keywords": []
+          },
+          {
+            "id": "cls-0018",
+            "name": "Forecasting & budgeting",
+            "level": 5,
+            "keywords": []
+          },
+          {
+            "id": "cls-0019",
+            "name": "Power BI",
+            "level": 4,
+            "keywords": []
+          },
+          {
+            "id": "cls-0020",
+            "name": "SQL",
+            "level": 3,
+            "keywords": []
+          },
+          {
+            "id": "cls-0021",
+            "name": "Excel / VBA",
+            "level": 5,
+            "keywords": []
+          },
+          {
+            "id": "cls-0022",
+            "name": "Stakeholder reporting",
+            "level": 4,
+            "keywords": []
+          }
+        ]
+      },
+      {
+        "id": "cls-0023",
+        "type": "languages",
+        "title": "Languages",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "text"
+        },
+        "items": [
+          {
+            "id": "cls-0024",
+            "name": "English",
+            "proficiency": "native"
+          },
+          {
+            "id": "cls-0025",
+            "name": "French",
+            "proficiency": "advanced"
+          }
+        ]
+      }
+    ]
+  },
+  "design": {
+    "version": 1
+  }
+}

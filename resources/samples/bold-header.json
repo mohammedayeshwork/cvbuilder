@@ -1,0 +1,220 @@
+{
+  "title": "Marcus Delgado — Marketing Manager",
+  "template_key": "bold-header",
+  "content": {
+    "version": 1,
+    "sections": [
+      {
+        "id": "bld-0001",
+        "type": "header",
+        "title": "Header",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showPhoto": true,
+          "showTitle": true,
+          "showLinks": true,
+          "showLocation": true
+        },
+        "items": [
+          {
+            "id": "bld-0002",
+            "name": "Marcus Delgado",
+            "title": "Growth Marketing Manager",
+            "phone": "+1 312 555 0147",
+            "email": "marcus.delgado@example.com",
+            "location": "Chicago, IL",
+            "links": [
+              {
+                "id": "bld-0003",
+                "label": "linkedin.com/in/marcusdelgado",
+                "url": "https://linkedin.com/in/marcusdelgado"
+              },
+              {
+                "id": "bld-0004",
+                "label": "marcusdelgado.com",
+                "url": "https://marcusdelgado.com"
+              }
+            ],
+            "photo": null
+          }
+        ]
+      },
+      {
+        "id": "bld-0005",
+        "type": "summary",
+        "title": "Summary",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {},
+        "items": [
+          {
+            "id": "bld-0006",
+            "text": "<p>Growth marketer who has scaled two consumer subscription brands from early traction to eight-figure revenue. Comfortable owning a budget, running experiments every week and building a team. Known for clear reporting and for killing campaigns that do not work.</p>"
+          }
+        ]
+      },
+      {
+        "id": "bld-0007",
+        "type": "experience",
+        "title": "Experience",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "bld-0008",
+            "role": "Growth Marketing Manager",
+            "company": "Brewline Coffee Subscriptions",
+            "location": "Chicago, IL",
+            "link": "",
+            "start": "2021-05",
+            "end": null,
+            "current": true,
+            "description": "<ul><li>Manage a $6m annual paid acquisition budget across Meta, Google, TikTok and podcasts.</li><li>Grew active subscribers from 48,000 to 155,000 while holding blended CAC under $38.</li><li>Built a team of 5 (performance, lifecycle, analytics) and hired every member.</li><li>Introduced a weekly experiment review; 120+ tests run in 2023 with a 28% win rate.</li></ul>"
+          },
+          {
+            "id": "bld-0009",
+            "role": "Senior Marketing Specialist",
+            "company": "Kinfolk Meals",
+            "location": "Chicago, IL",
+            "link": "",
+            "start": "2018-09",
+            "end": "2021-04",
+            "current": false,
+            "description": "<ul><li>Launched referral programme that drove 22% of new customers within a year.</li><li>Rebuilt lifecycle email flows, lifting 90-day retention by 11 points.</li><li>Ran the first brand campaign, which reached 3.4m people across the Midwest.</li></ul>"
+          },
+          {
+            "id": "bld-0010",
+            "role": "Marketing Coordinator",
+            "company": "Lakeshore Events",
+            "location": "Evanston, IL",
+            "link": "",
+            "start": "2016-06",
+            "end": "2018-08",
+            "current": false,
+            "description": "<ul><li>Coordinated marketing for 40+ events a year with attendance up to 8,000.</li><li>Managed social channels and grew Instagram following from 2k to 26k.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "bld-0011",
+        "type": "education",
+        "title": "Education",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showGrade": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "bld-0012",
+            "degree": "BA Communication Studies",
+            "institution": "Northwestern University",
+            "location": "Evanston, IL",
+            "start": "2012",
+            "end": "2016",
+            "current": false,
+            "grade": "",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "bld-0013",
+        "type": "skills",
+        "title": "Skills",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "bars"
+        },
+        "items": [
+          {
+            "id": "bld-0014",
+            "name": "Paid social",
+            "level": 5,
+            "keywords": []
+          },
+          {
+            "id": "bld-0015",
+            "name": "Search advertising",
+            "level": 4,
+            "keywords": []
+          },
+          {
+            "id": "bld-0016",
+            "name": "Lifecycle & CRM",
+            "level": 4,
+            "keywords": []
+          },
+          {
+            "id": "bld-0017",
+            "name": "Experiment design",
+            "level": 5,
+            "keywords": []
+          },
+          {
+            "id": "bld-0018",
+            "name": "SQL & Looker",
+            "level": 3,
+            "keywords": []
+          },
+          {
+            "id": "bld-0019",
+            "name": "Team leadership",
+            "level": 4,
+            "keywords": []
+          }
+        ]
+      },
+      {
+        "id": "bld-0020",
+        "type": "volunteer",
+        "title": "Volunteering",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "bld-0021",
+            "role": "Marketing Mentor",
+            "organization": "Chicago Youth Entrepreneurs",
+            "location": "Chicago, IL",
+            "start": "2020",
+            "end": null,
+            "current": true,
+            "description": "<p>Mentor high-school founders on positioning and their first customer campaigns.</p>"
+          }
+        ]
+      },
+      {
+        "id": "bld-0022",
+        "type": "references",
+        "title": "References",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "onRequestOnly": true,
+          "showContact": true
+        },
+        "items": []
+      }
+    ]
+  },
+  "design": {
+    "version": 1
+  }
+}

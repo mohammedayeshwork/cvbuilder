@@ -1,0 +1,131 @@
+{
+  "$id": "https://cvbuilder.local/schema/design.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number",
+      "const": 1
+    },
+    "accent": {
+      "type": "string",
+      "pattern": "^#[0-9a-f]{6}$"
+    },
+    "palette": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "slate",
+            "navy",
+            "ocean",
+            "teal",
+            "forest",
+            "olive",
+            "ochre",
+            "rust",
+            "burgundy",
+            "rose",
+            "plum",
+            "graphite"
+          ]
+        },
+        {
+          "type": "string",
+          "const": "custom"
+        }
+      ]
+    },
+    "fontPair": {
+      "type": "string",
+      "enum": [
+        "source",
+        "plex",
+        "fraunces-inter",
+        "garamond-work",
+        "dm",
+        "lora-karla",
+        "grotesk-inter",
+        "noto-arabic"
+      ]
+    },
+    "fontSize": {
+      "type": "number",
+      "minimum": 8.5,
+      "maximum": 12
+    },
+    "lineHeight": {
+      "type": "number",
+      "minimum": 1.15,
+      "maximum": 1.7
+    },
+    "sectionSpacing": {
+      "type": "number",
+      "minimum": 0.6,
+      "maximum": 1.6
+    },
+    "pageMargin": {
+      "type": "number",
+      "minimum": 10,
+      "maximum": 25
+    },
+    "pageSize": {
+      "type": "string",
+      "enum": [
+        "A4",
+        "Letter"
+      ]
+    },
+    "background": {
+      "type": "string",
+      "enum": [
+        "none",
+        "dots",
+        "grid",
+        "lines",
+        "corner"
+      ]
+    },
+    "dateFormat": {
+      "type": "string",
+      "enum": [
+        "MMM YYYY",
+        "MMMM YYYY",
+        "MM/YYYY",
+        "YYYY-MM",
+        "YYYY"
+      ]
+    },
+    "sectionTitle": {
+      "type": "object",
+      "properties": {
+        "case": {
+          "type": "string",
+          "enum": [
+            "upper",
+            "smallcaps",
+            "title"
+          ]
+        },
+        "underline": {
+          "type": "boolean"
+        },
+        "icons": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "ltr",
+        "rtl"
+      ]
+    }
+  },
+  "required": [
+    "version"
+  ],
+  "additionalProperties": false
+}

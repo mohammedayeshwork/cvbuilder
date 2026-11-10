@@ -1,0 +1,469 @@
+{
+  "title": "Dr. Samuel Okafor — Research Scientist",
+  "template_key": "timeline",
+  "content": {
+    "version": 1,
+    "sections": [
+      {
+        "id": "tml-0001",
+        "type": "header",
+        "title": "Header",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showPhoto": true,
+          "showTitle": true,
+          "showLinks": true,
+          "showLocation": true
+        },
+        "items": [
+          {
+            "id": "tml-0002",
+            "name": "Samuel Okafor",
+            "title": "Research Scientist, Climate & Hydrology",
+            "phone": "+31 20 555 0172",
+            "email": "s.okafor@example.org",
+            "location": "Amsterdam, Netherlands",
+            "links": [
+              {
+                "id": "tml-0003",
+                "label": "orcid.org/0000-0002-1825-0097",
+                "url": "https://orcid.org/0000-0002-1825-0097"
+              },
+              {
+                "id": "tml-0004",
+                "label": "samokafor.science",
+                "url": "https://samokafor.science"
+              }
+            ],
+            "photo": null
+          }
+        ]
+      },
+      {
+        "id": "tml-0005",
+        "type": "summary",
+        "title": "Summary",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {},
+        "items": [
+          {
+            "id": "tml-0006",
+            "text": "<p>Hydrologist with twelve years of research on flood forecasting, river basin modelling and climate adaptation in West Africa and Northern Europe. I lead interdisciplinary teams, have secured €4.8m in competitive funding, and work closely with water authorities so that research turns into early-warning systems people rely on.</p>"
+          }
+        ]
+      },
+      {
+        "id": "tml-0007",
+        "type": "experience",
+        "title": "Experience",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "tml-0008",
+            "role": "Senior Research Scientist",
+            "company": "Delta Institute for Water Research",
+            "location": "Amsterdam",
+            "link": "",
+            "start": "2020-09",
+            "end": null,
+            "current": true,
+            "description": "<ul><li>Lead the Flood Resilience group (4 postdocs, 6 PhD students, 2 engineers).</li><li>Principal investigator on the EU Horizon project RIVERSENSE (€2.9m, 11 partners in 7 countries).</li><li>Developed an ensemble flood forecasting model now run operationally by two national agencies.</li><li>Built a data partnership with the Niger Basin Authority that gives researchers access to 40 years of gauge records.</li><li>Teach the graduate course “Hydrological Modelling under Uncertainty” (60 students a year).</li></ul>"
+          },
+          {
+            "id": "tml-0009",
+            "role": "Postdoctoral Researcher",
+            "company": "University of Utrecht, Department of Physical Geography",
+            "location": "Utrecht",
+            "link": "",
+            "start": "2017-01",
+            "end": "2020-08",
+            "current": false,
+            "description": "<ul><li>Coupled land-surface and river-routing models to study compound flooding in deltas.</li><li>Published 9 peer-reviewed papers, including two in Nature Communications.</li><li>Co-supervised 3 PhD students, all of whom finished on time.</li><li>Organised the 2019 European Hydrology Summer School (120 participants).</li></ul>"
+          },
+          {
+            "id": "tml-0010",
+            "role": "Doctoral Researcher",
+            "company": "Imperial College London",
+            "location": "London",
+            "link": "",
+            "start": "2013-10",
+            "end": "2016-12",
+            "current": false,
+            "description": "<ul><li>Thesis: “Data-sparse flood forecasting for the Niger River using satellite rainfall”.</li><li>Ran three field campaigns in Mali and Niger to install and calibrate river gauges.</li><li>Taught undergraduate labs in fluid mechanics and GIS.</li></ul>"
+          },
+          {
+            "id": "tml-0011",
+            "role": "Water Resources Engineer",
+            "company": "Sahel Water Partners",
+            "location": "Niamey, Niger",
+            "link": "",
+            "start": "2010-03",
+            "end": "2013-08",
+            "current": false,
+            "description": "<ul><li>Designed small irrigation and water-harvesting schemes for 18 rural communities.</li><li>Trained 40 local technicians in gauge maintenance and data collection.</li><li>Wrote the technical reports that secured follow-on funding from two NGOs.</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "tml-0012",
+        "type": "education",
+        "title": "Education",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showGrade": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "tml-0013",
+            "degree": "PhD Civil & Environmental Engineering",
+            "institution": "Imperial College London",
+            "location": "London",
+            "start": "2013",
+            "end": "2016",
+            "current": false,
+            "grade": "",
+            "description": ""
+          },
+          {
+            "id": "tml-0014",
+            "degree": "MSc Water Resources Engineering",
+            "institution": "University of Birmingham",
+            "location": "Birmingham",
+            "start": "2008",
+            "end": "2009",
+            "current": false,
+            "grade": "Distinction",
+            "description": ""
+          },
+          {
+            "id": "tml-0015",
+            "degree": "BEng Civil Engineering",
+            "institution": "University of Lagos",
+            "location": "Lagos",
+            "start": "2003",
+            "end": "2008",
+            "current": false,
+            "grade": "First Class",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "tml-0016",
+        "type": "publications",
+        "title": "Publications",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDate": true,
+          "showPublisher": true,
+          "showAuthors": true,
+          "showLink": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "tml-0017",
+            "title": "Ensemble flood forecasting for data-sparse basins using satellite precipitation",
+            "publisher": "Nature Communications 15, 2231",
+            "authors": "Okafor S., de Vries M., Traoré A., Bakker L.",
+            "date": "2024-03",
+            "link": "doi.org/10.1038/s41467-024-0000-1",
+            "description": ""
+          },
+          {
+            "id": "tml-0018",
+            "title": "Compound flooding in the Rhine–Meuse delta under sea-level rise",
+            "publisher": "Water Resources Research 59(4)",
+            "authors": "Bakker L., Okafor S., Janssen P.",
+            "date": "2023-04",
+            "link": "doi.org/10.1029/2022WR000001",
+            "description": ""
+          },
+          {
+            "id": "tml-0019",
+            "title": "How useful are global hydrological models for local flood warnings?",
+            "publisher": "Hydrology and Earth System Sciences 26, 4471–4490",
+            "authors": "Okafor S., Mensah K., Laurent C.",
+            "date": "2022-09",
+            "link": "doi.org/10.5194/hess-26-4471-2022",
+            "description": ""
+          },
+          {
+            "id": "tml-0020",
+            "title": "Satellite rainfall bias correction for the Niger basin",
+            "publisher": "Journal of Hydrometeorology 22(6)",
+            "authors": "Okafor S., Traoré A.",
+            "date": "2021-06",
+            "link": "doi.org/10.1175/JHM-D-20-0001.1",
+            "description": ""
+          },
+          {
+            "id": "tml-0021",
+            "title": "Coupling land-surface and routing models for deltaic floods",
+            "publisher": "Nature Communications 11, 5120",
+            "authors": "Okafor S., Janssen P., de Vries M.",
+            "date": "2020-10",
+            "link": "doi.org/10.1038/s41467-020-0000-2",
+            "description": ""
+          },
+          {
+            "id": "tml-0022",
+            "title": "Community gauge networks as a source of calibration data",
+            "publisher": "Hydrological Sciences Journal 64(12)",
+            "authors": "Mensah K., Okafor S.",
+            "date": "2019-09",
+            "link": "doi.org/10.1080/02626667.2019.0000001",
+            "description": ""
+          },
+          {
+            "id": "tml-0023",
+            "title": "Uncertainty in flood frequency estimates from short records",
+            "publisher": "Journal of Hydrology 570, 112–125",
+            "authors": "Okafor S., Laurent C., Hughes R.",
+            "date": "2019-03",
+            "link": "doi.org/10.1016/j.jhydrol.2019.000001",
+            "description": ""
+          },
+          {
+            "id": "tml-0024",
+            "title": "A low-cost river gauge for West African tributaries",
+            "publisher": "Water Practice & Technology 12(2)",
+            "authors": "Okafor S., Hughes R.",
+            "date": "2017-06",
+            "link": "",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "tml-0025",
+        "type": "awards",
+        "title": "Awards",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDate": true,
+          "showIssuer": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "tml-0026",
+            "title": "Early Career Scientist Award",
+            "issuer": "European Geosciences Union, Hydrological Sciences Division",
+            "date": "2022",
+            "description": "<p>For work on operational flood forecasting in data-sparse regions.</p>"
+          },
+          {
+            "id": "tml-0027",
+            "title": "Veni Grant (€280,000)",
+            "issuer": "Dutch Research Council (NWO)",
+            "date": "2019",
+            "description": ""
+          },
+          {
+            "id": "tml-0028",
+            "title": "Commonwealth Scholarship",
+            "issuer": "Commonwealth Scholarship Commission",
+            "date": "2013",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "tml-0029",
+        "type": "volunteer",
+        "title": "Volunteering",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDates": true,
+          "showLocation": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "tml-0030",
+            "role": "Scientific Advisor",
+            "organization": "Floodwatch Africa (non-profit)",
+            "location": "Remote",
+            "start": "2018",
+            "end": null,
+            "current": true,
+            "description": "<p>Advise on sensor design and data quality for community flood-warning networks in 5 countries.</p>"
+          },
+          {
+            "id": "tml-0031",
+            "role": "Mentor",
+            "organization": "African Women in Geosciences",
+            "location": "Remote",
+            "start": "2019",
+            "end": null,
+            "current": true,
+            "description": "<p>Mentor two early-career researchers each year on grant writing and publishing.</p>"
+          }
+        ]
+      },
+      {
+        "id": "tml-0032",
+        "type": "courses",
+        "title": "Courses",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "showDate": true,
+          "showInstitution": true,
+          "showDescription": true
+        },
+        "items": [
+          {
+            "id": "tml-0033",
+            "name": "Hydrological Modelling under Uncertainty",
+            "institution": "Delta Institute (lecturer)",
+            "date": "2021",
+            "description": "<p>Graduate course, 5 ECTS, taught every autumn.</p>"
+          },
+          {
+            "id": "tml-0034",
+            "name": "Machine Learning for Earth Sciences",
+            "institution": "ETH Zürich Summer School",
+            "date": "2020-07",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "id": "tml-0035",
+        "type": "skills",
+        "title": "Skills",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "grouped"
+        },
+        "items": [
+          {
+            "id": "tml-0036",
+            "name": "Hydrological modelling",
+            "level": 5,
+            "keywords": [
+              "wflow",
+              "LISFLOOD",
+              "HEC-RAS"
+            ]
+          },
+          {
+            "id": "tml-0037",
+            "name": "Programming",
+            "level": 4,
+            "keywords": [
+              "Python",
+              "R",
+              "Julia",
+              "Fortran"
+            ]
+          },
+          {
+            "id": "tml-0038",
+            "name": "Remote sensing",
+            "level": 4,
+            "keywords": [
+              "GPM",
+              "Sentinel-1",
+              "Google Earth Engine"
+            ]
+          },
+          {
+            "id": "tml-0039",
+            "name": "Research leadership",
+            "level": 5,
+            "keywords": [
+              "Grant writing",
+              "Supervision"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "tml-0040",
+        "type": "languages",
+        "title": "Languages",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "display": "bars"
+        },
+        "items": [
+          {
+            "id": "tml-0041",
+            "name": "English",
+            "proficiency": "native"
+          },
+          {
+            "id": "tml-0042",
+            "name": "Yoruba",
+            "proficiency": "native"
+          },
+          {
+            "id": "tml-0043",
+            "name": "French",
+            "proficiency": "advanced"
+          },
+          {
+            "id": "tml-0044",
+            "name": "Dutch",
+            "proficiency": "intermediate"
+          }
+        ]
+      },
+      {
+        "id": "tml-0045",
+        "type": "references",
+        "title": "References",
+        "column": "main",
+        "pageBreakBefore": false,
+        "settings": {
+          "onRequestOnly": false,
+          "showContact": true
+        },
+        "items": [
+          {
+            "id": "tml-0046",
+            "name": "Prof. Marieke de Vries",
+            "title": "Chair of Hydrology",
+            "company": "University of Utrecht",
+            "email": "m.devries@example.org",
+            "phone": "+31 30 555 0101",
+            "relationship": "Postdoctoral supervisor"
+          },
+          {
+            "id": "tml-0047",
+            "name": "Dr. Aminata Traoré",
+            "title": "Head of Forecasting",
+            "company": "Niger Basin Authority",
+            "email": "a.traore@example.org",
+            "phone": "+227 20 55 01 02",
+            "relationship": "Research partner since 2014"
+          }
+        ]
+      }
+    ]
+  },
+  "design": {
+    "version": 1
+  }
+}
