@@ -12,7 +12,8 @@
         "schema:export": "tsx scripts/export-schema.ts",
         "schema:check": "tsx scripts/export-schema.ts --check",
         "samples:build": "tsx scripts/build-samples.ts",
-        "samples:check": "tsx scripts/build-samples.ts --check"
+        "samples:check": "tsx scripts/build-samples.ts --check",
+        "test": "vp test run"
     },
     "dependencies": {
         "@inertiajs/react": "^3.0.0",
@@ -56,6 +57,7 @@
         "@rolldown/plugin-babel": "^0.2.3",
         "@types/node": "^22.13.5",
         "babel-plugin-react-compiler": "^1.0.0",
+        "puppeteer": "^25.17.0",
         "tsx": "^4.23.15",
         "vite-plus": "1.4.0"
     },
