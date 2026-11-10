@@ -1,0 +1,67 @@
+/* Classic: serif headings, thin rules, a centered header. */
+
+[data-template='classic'] .cl-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--rhythm) * 1.2);
+    padding-block-end: calc(var(--rhythm) * 0.75);
+    border-block-end: 0.75pt solid var(--accent);
+    text-align: center;
+}
+
+[data-template='classic'] .cl-header:has(.cl-photo) {
+    justify-content: flex-start;
+    text-align: start;
+}
+
+[data-template='classic'] .cl-header:has(.cl-photo) .cl-contact {
+    justify-content: flex-start;
+}
+
+[data-template='classic'] .cl-name {
+    font-family: var(--font-heading);
+    font-size: 2.5em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: calc(var(--rhythm) * 2);
+}
+
+[data-template='classic'] .cl-title {
+    display: block;
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 1.15em;
+    font-style: italic;
+    line-height: var(--rhythm);
+}
+
+[data-template='classic'] .cl-contact {
+    justify-content: center;
+    margin-block-start: calc(var(--rhythm) * 0.35);
+    column-gap: 0;
+    color: var(--muted);
+}
+
+[data-template='classic'] .cl-links {
+    margin-block-start: 0;
+}
+
+[data-template='classic'] .cl-contact li + li::before {
+    content: '·';
+    margin-inline: 0.55em;
+    color: var(--faint);
+}
+
+[data-template='classic'] .cv-section-title {
+    font-weight: 650;
+}
+
+[data-template='classic'] .cv-entry-title {
+    font-weight: 650;
+}
+
+[data-template='classic'] .cv-entry-subtitle {
+    color: var(--ink);
+    font-style: italic;
+}

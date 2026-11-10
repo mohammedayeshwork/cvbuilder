@@ -1,0 +1,344 @@
+/*
+ * Shared document styles. Templates restyle these under [data-template=key].
+ *
+ * Sizes are in pt/mm so the screen and the PDF agree. Vertical spacing is
+ * always a multiple of --rhythm (one line of body text), which keeps a
+ * consistent baseline. Logical properties make dir="rtl" mirror everything.
+ */
+
+.cv-document {
+    --rhythm: calc(var(--fs) * var(--lh));
+    --gap: calc(var(--rhythm) * var(--spacing));
+    --muted: color-mix(in srgb, var(--ink) 70%, white);
+    --faint: color-mix(in srgb, var(--ink) 38%, white);
+    --rule: color-mix(in srgb, var(--accent) 40%, white);
+    --tint: color-mix(in srgb, var(--accent) 9%, white);
+    --accent-ink: color-mix(in srgb, var(--accent) 88%, black);
+
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--fs);
+    line-height: var(--lh);
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures;
+    text-align: start;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+}
+
+.cv-document *,
+.cv-document *::before,
+.cv-document *::after {
+    box-sizing: border-box;
+}
+
+.cv-document :where(h1, h2, h3, p, ul, li) {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.cv-document :where(ul) {
+    list-style: none;
+}
+
+/* ------------------------------------------------------------- page */
+
+.cv-page {
+    position: relative;
+    width: var(--page-w);
+    min-height: var(--page-h);
+    padding: var(--margin);
+    overflow: hidden;
+    background: white;
+}
+
+.cv-columns {
+    display: grid;
+    grid-template-columns: var(--main-width, 65fr) var(--side-width, 35fr);
+    column-gap: calc(var(--rhythm) * 1.5);
+    align-items: start;
+}
+
+.cv-columns[data-side='start'] {
+    grid-template-columns: var(--side-width, 35fr) var(--main-width, 65fr);
+}
+
+.cv-columns[data-side='start'] > .cv-main {
+    order: 2;
+}
+
+/* --------------------------------------------------------- sections */
+
+.cv-section + .cv-section,
+.cv-header + .cv-body-flow {
+    margin-block-start: var(--gap);
+}
+
+.cv-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.45em;
+    margin-block-end: calc(var(--rhythm) * 0.5);
+    color: var(--accent);
+    font-family: var(--font-heading);
+    font-size: 1.15em;
+    font-weight: 600;
+    line-height: var(--rhythm);
+}
+
+.cv-document[data-title-case='upper'] .cv-section-title {
+    font-size: 0.95em;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.cv-document[data-title-case='smallcaps'] .cv-section-title {
+    font-size: 1.1em;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
+}
+
+.cv-document[data-title-underline='true'] .cv-section-title {
+    padding-block-end: calc(var(--rhythm) * 0.25);
+    border-block-end: 0.75pt solid var(--rule);
+}
+
+.cv-section-icon {
+    width: 1.05em;
+    height: 1.05em;
+    flex-shrink: 0;
+    stroke-width: 2;
+}
+
+.cv-keep + .cv-block,
+.cv-block + .cv-block {
+    margin-block-start: calc(var(--rhythm) * 0.5);
+}
+
+/* ----------------------------------------------------------- entries */
+
+.cv-entry-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.cv-entry-title {
+    font-weight: 600;
+}
+
+.cv-entry-titles .cv-sep::before {
+    content: ',';
+    margin-inline: 0 0.3em;
+}
+
+.cv-entry-dates {
+    flex-shrink: 0;
+    color: var(--muted);
+    font-size: 0.92em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.cv-entry[data-layout='timeline'] > .cv-entry-dates {
+    display: block;
+}
+
+.cv-entry-meta {
+    color: var(--muted);
+}
+
+.cv-entry-body {
+    margin-block-start: calc(var(--rhythm) * 0.2);
+}
+
+.cv-sep::before {
+    content: '·';
+    margin-inline: 0.45em;
+}
+
+/* --------------------------------------------------------- rich text */
+
+.cv-rich p + p,
+.cv-rich p + ul,
+.cv-rich ul + p {
+    margin-block-start: calc(var(--rhythm) * 0.3);
+}
+
+.cv-rich ul {
+    padding-inline-start: 1.1em;
+    list-style: disc;
+}
+
+.cv-rich li::marker {
+    color: var(--accent);
+}
+
+.cv-rich li + li {
+    margin-block-start: calc(var(--rhythm) * 0.1);
+}
+
+.cv-rich strong {
+    font-weight: 650;
+}
+
+.cv-rich a,
+.cv-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.cv-rich a {
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 0.15em;
+}
+
+/* ---------------------------------------------------- header pieces */
+
+.cv-contact {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.9em;
+    row-gap: 0.1em;
+}
+
+.cv-contact li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+}
+
+.cv-contact-icon {
+    width: 0.95em;
+    height: 0.95em;
+    flex-shrink: 0;
+    color: var(--accent);
+}
+
+.cv-photo {
+    display: block;
+    width: 26mm;
+    height: 26mm;
+    object-fit: cover;
+    border-radius: 2mm;
+}
+
+.cv-photo[data-shape='round'] {
+    border-radius: 50%;
+}
+
+/* ------------------------------------------------- skills, languages */
+
+.cv-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--rhythm) * 0.25) 0.35em;
+}
+
+.cv-tag {
+    padding: 0.05em 0.6em;
+    border-radius: 999px;
+    background: var(--tint);
+    color: var(--accent-ink);
+    font-size: 0.92em;
+}
+
+.cv-skill-name {
+    font-weight: 600;
+}
+
+.cv-skill-name + .cv-skill-keywords::before {
+    content: ': ';
+}
+
+.cv-skill-keywords {
+    color: var(--muted);
+}
+
+.cv-rated {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 0.75em;
+}
+
+.cv-rated-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+    column-gap: calc(var(--rhythm) * 1.5);
+    row-gap: calc(var(--rhythm) * 0.3);
+}
+
+.cv-rated-label {
+    color: var(--muted);
+}
+
+.cv-meter {
+    display: block;
+    width: 5.5em;
+    height: 0.4em;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--tint);
+}
+
+.cv-meter > span {
+    display: block;
+    width: calc(var(--level) * 20%);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--accent);
+}
+
+.cv-dots {
+    display: inline-flex;
+    gap: 0.25em;
+}
+
+.cv-dots > span {
+    width: 0.55em;
+    height: 0.55em;
+    border-radius: 50%;
+    background: var(--tint);
+    box-shadow: inset 0 0 0 0.75pt var(--rule);
+}
+
+.cv-dots > span[data-on] {
+    background: var(--accent);
+    box-shadow: none;
+}
+
+.cv-inline-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cv-inline-list .cv-rated-label::before {
+    content: ' (';
+}
+
+.cv-inline-list .cv-rated-label::after {
+    content: ')';
+}
+
+.cv-inline-list li + li::before {
+    content: '·';
+    margin-inline: 0.45em;
+    color: var(--faint);
+}
+
+.cv-muted {
+    color: var(--muted);
+}
+
+/* ------------------------------------------------------ editor only */
+
+.cv-placeholder {
+    color: var(--faint);
+}
