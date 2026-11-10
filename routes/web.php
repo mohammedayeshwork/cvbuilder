@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\PrintController;
 use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'welcome')->name('home');
@@ -27,5 +28,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::delete('/', 'destroy')->name('destroy')->can('delete', 'document');
         });
 });
+
+Route::get('internal/print/{document}', PrintController::class)
+    ->middleware('signed:relative')
+    ->name('documents.print');
 
 require __DIR__.'/settings.php';
