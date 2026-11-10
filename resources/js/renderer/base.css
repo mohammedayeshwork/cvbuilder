@@ -56,6 +56,10 @@
     background: white;
 }
 
+.cv-document[data-mode='edit'] .cv-page {
+    overflow: visible;
+}
+
 .cv-columns {
     display: grid;
     grid-template-columns: var(--main-width, 65fr) var(--side-width, 35fr);
@@ -73,8 +77,8 @@
 
 /* --------------------------------------------------------- sections */
 
-.cv-section + .cv-section,
-.cv-header + .cv-body-flow {
+:is(.cv-section, .cv-section-frame) + :is(.cv-section, .cv-section-frame),
+* + .cv-body-flow {
     margin-block-start: var(--gap);
 }
 

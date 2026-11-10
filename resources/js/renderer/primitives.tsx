@@ -2,10 +2,16 @@ import { Globe, Mail, MapPin, Phone } from 'lucide-react';
 import type { CSSProperties, ReactNode } from 'react';
 import { Fragment } from 'react';
 import { cn } from '@/lib/utils';
-import type { HeaderItem, PartialDate, Section } from '@/schema';
+import type {
+    HeaderItem,
+    LanguageProficiency,
+    PartialDate,
+    Section,
+} from '@/schema';
 import { fieldDef } from '@/sections/fields';
 import { SECTION_ICONS } from '@/sections/icons';
 import { useItem, useRender } from './context';
+import { maxLengthOf, useEdit } from './edit';
 import {
     displayUrl,
     formatPartialDate,
@@ -42,6 +48,7 @@ export function Field({
     className?: string;
 }) {
     const { mode } = useRender();
+    const edit = useEdit();
     const { section, item } = useItem();
     const visible = useFieldVisible(name);
     const def = fieldDef(section.type, name);
@@ -50,6 +57,41 @@ export function Field({
 
     if (!visible) {
         return null;
+    }
+
+    if (mode === 'edit' && edit) {
+        const onChange = (value: string) =>
+            edit.setField(
+                section.id,
+                item.id,
+                name,
+                def?.kind === 'url' ? value.replace(/\s/g, '') : value,
+            );
+        const label = def?.label ?? name;
+
+        return def?.kind === 'rich' ? (
+            <edit.Rich
+                html={text}
+                onChange={onChange}
+                placeholder={def.placeholder}
+                label={label}
+                className={className}
+            />
+        ) : (
+            <edit.Text
+                value={text}
+                onChange={onChange}
+                placeholder={def?.placeholder}
+                label={label}
+                maxLength={maxLengthOf(section.type, name)}
+                className={className}
+                field={name}
+                spellCheck={
+                    !['email', 'phone', 'url'].includes(def?.kind ?? '') &&
+                    !(section.type === 'header' && name === 'name')
+                }
+            />
+        );
     }
 
     if (def?.kind === 'rich') {
@@ -162,6 +204,7 @@ export function Meta({
 /** The item's date or date range in the document's date format. */
 export function Dates({ className }: { className?: string }) {
     const { design, mode } = useRender();
+    const edit = useEdit();
     const { section, item } = useItem();
     const record = item as AnyRecord;
     const ranged = 'start' in record;
@@ -170,6 +213,10 @@ export function Dates({ className }: { className?: string }) {
 
     if (!def || (def.toggle && settings[def.toggle] === false)) {
         return null;
+    }
+
+    if (mode === 'edit' && edit) {
+        return <edit.Dates className={className} />;
     }
 
     const text = ranged
@@ -193,7 +240,8 @@ export function Dates({ className }: { className?: string }) {
 }
 
 export function SectionTitle({ section }: { section: Section }) {
-    const { design } = useRender();
+    const { design, mode } = useRender();
+    const edit = useEdit();
     const Icon = SECTION_ICONS[section.type];
 
     return (
@@ -201,7 +249,19 @@ export function SectionTitle({ section }: { section: Section }) {
             {design.sectionTitle.icons && (
                 <Icon className="cv-section-icon" aria-hidden />
             )}
-            <span>{section.title}</span>
+            {mode === 'edit' && edit ? (
+                <edit.Text
+                    value={section.title}
+                    onChange={(title) =>
+                        edit.setSectionTitle(section.id, title)
+                    }
+                    placeholder="Section title"
+                    label="Section title"
+                    maxLength={80}
+                />
+            ) : (
+                <span>{section.title}</span>
+            )}
         </h2>
     );
 }
@@ -396,4 +456,89 @@ export function Dots({ level, label }: { level: number; label: string }) {
             ))}
         </span>
     );
+}
+
+/** The current item's keywords as "a, b, c"; editable in the editor. */
+export function Keywords({
+    className,
+    prefix,
+}: {
+    className?: string;
+    prefix?: (text: string) => ReactNode;
+}) {
+    const { mode } = useRender();
+    const edit = useEdit();
+    const { section, item } = useItem();
+    const keywords = ((item as AnyRecord).keywords as string[]) ?? [];
+    const def = fieldDef(section.type, 'keywords');
+
+    if (def?.toggle && (section.settings as AnyRecord)[def.toggle] === false) {
+        return null;
+    }
+
+    if (mode === 'edit' && edit) {
+        return (
+            <edit.Keywords
+                value={keywords}
+                onChange={(value) =>
+                    edit.setField(section.id, item.id, 'keywords', value)
+                }
+                placeholder="Keywords, comma separated"
+                label={def?.label ?? 'Keywords'}
+                className={className}
+            />
+        );
+    }
+
+    if (keywords.length === 0) {
+        return null;
+    }
+
+    const text = keywords.join(', ');
+
+    return <span className={className}>{prefix ? prefix(text) : text}</span>;
+}
+
+/** The current skill's level as a bar; clickable in the editor. */
+export function LevelMeter() {
+    const { mode } = useRender();
+    const edit = useEdit();
+    const { section, item } = useItem();
+    const level = ((item as AnyRecord).level as number) ?? 0;
+
+    if (mode === 'edit' && edit) {
+        return (
+            <edit.Level
+                level={level}
+                onChange={(value) =>
+                    edit.setField(section.id, item.id, 'level', value)
+                }
+            />
+        );
+    }
+
+    return <Meter level={level} label={`${level} out of 5`} />;
+}
+
+/** Wraps a proficiency display; in the editor it becomes a picker. */
+export function ProficiencyControl({ children }: { children: ReactNode }) {
+    const { mode } = useRender();
+    const edit = useEdit();
+    const { section, item } = useItem();
+    const value = (item as AnyRecord).proficiency as LanguageProficiency;
+
+    if (mode === 'edit' && edit) {
+        return (
+            <edit.Proficiency
+                value={value}
+                onChange={(next) =>
+                    edit.setField(section.id, item.id, 'proficiency', next)
+                }
+            >
+                {children}
+            </edit.Proficiency>
+        );
+    }
+
+    return <>{children}</>;
 }

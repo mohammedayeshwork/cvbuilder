@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 import type { ReactNode } from 'react';
 import type { Design, Section } from '@/schema';
 import type { TemplateDefinition } from '@/templates/types';
+import { useEdit } from './edit';
 
 /**
  * edit: inline editing on the canvas (placeholders, toolbars)
@@ -39,15 +40,22 @@ interface ItemContextValue {
 
 const ItemContext = createContext<ItemContextValue | null>(null);
 
-/** Gives fields inside it access to one item of one section. */
+/**
+ * Gives fields inside it access to one item of one section. In the editor
+ * it also wraps the item in its hover controls.
+ */
 export function ItemScope({
     section,
     item,
     children,
 }: ItemContextValue & { children: ReactNode }) {
+    const render = useContext(RenderContext);
+    const edit = useEdit();
+    const framed = render?.mode === 'edit' && edit !== null;
+
     return (
         <ItemContext.Provider value={{ section, item }}>
-            {children}
+            {framed ? <edit.ItemFrame>{children}</edit.ItemFrame> : children}
         </ItemContext.Provider>
     );
 }

@@ -1,5 +1,5 @@
 import { ItemScope } from '@/renderer/context';
-import { Field } from '@/renderer/primitives';
+import { Field, Keywords } from '@/renderer/primitives';
 import type { SectionDefinition } from '../types';
 import fields from './fields';
 
@@ -14,13 +14,10 @@ export default {
                         <li key={item.id}>
                             <ItemScope section={section} item={item}>
                                 <Field name="name" />
-                                {section.settings.showKeywords &&
-                                    item.keywords.length > 0 && (
-                                        <span className="cv-muted">
-                                            {' '}
-                                            ({item.keywords.join(', ')})
-                                        </span>
-                                    )}
+                                <Keywords
+                                    className="cv-muted cv-interest-keywords"
+                                    prefix={(text) => ` (${text})`}
+                                />
                             </ItemScope>
                         </li>
                     ))}

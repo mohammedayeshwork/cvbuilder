@@ -1,5 +1,5 @@
 import { ItemScope } from '@/renderer/context';
-import { Field, Meter } from '@/renderer/primitives';
+import { Field, Keywords, LevelMeter } from '@/renderer/primitives';
 import type { SectionDefinition } from '../types';
 import fields from './fields';
 
@@ -34,16 +34,15 @@ export default {
                     node: (
                         <ul className="cv-rated-grid">
                             {section.items.map((item) => (
-                                <li key={item.id} className="cv-rated">
+                                <li key={item.id}>
                                     <ItemScope section={section} item={item}>
-                                        <Field
-                                            name="name"
-                                            className="cv-rated-name"
-                                        />
-                                        <Meter
-                                            level={item.level}
-                                            label={`${item.level} out of 5`}
-                                        />
+                                        <div className="cv-rated">
+                                            <Field
+                                                name="name"
+                                                className="cv-rated-name"
+                                            />
+                                            <LevelMeter />
+                                        </div>
                                     </ItemScope>
                                 </li>
                             ))}
@@ -59,11 +58,7 @@ export default {
                 <ItemScope section={section} item={item}>
                     <div className="cv-skill-group">
                         <Field name="name" className="cv-skill-name" />
-                        {item.keywords.length > 0 && (
-                            <span className="cv-skill-keywords">
-                                {item.keywords.join(', ')}
-                            </span>
-                        )}
+                        <Keywords className="cv-skill-keywords" />
                     </div>
                 </ItemScope>
             ),

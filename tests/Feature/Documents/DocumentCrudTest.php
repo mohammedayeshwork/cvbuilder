@@ -96,6 +96,14 @@ it('renames a document', function () {
     expect($document->fresh()->title)->toBe('Finance roles');
 });
 
+it('renames over JSON without a redirect', function () {
+    $document = Document::factory()->for($this->user)->create();
+
+    $this->patchJson(route('documents.rename', $document), ['title' => 'From the editor'])->assertNoContent();
+
+    expect($document->fresh()->title)->toBe('From the editor');
+});
+
 it('duplicates a document without its share link', function () {
     $document = Document::factory()->for($this->user)->shared()->create(['revision' => 7]);
 

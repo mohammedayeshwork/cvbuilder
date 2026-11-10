@@ -9,6 +9,7 @@ use App\Models\Document;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
@@ -125,13 +126,13 @@ class DocumentController extends Controller
         return response()->json(['revision' => $revision + 1, 'updated_at' => $now->toIso8601String()]);
     }
 
-    public function rename(Request $request, Document $document): RedirectResponse
+    public function rename(Request $request, Document $document): RedirectResponse|HttpResponse
     {
         $data = $request->validate(['title' => ['required', 'string', 'max:120']]);
 
         $document->update(['title' => trim($data['title'])]);
 
-        return back();
+        return $request->expectsJson() ? response()->noContent() : back();
     }
 
     public function duplicate(Document $document): RedirectResponse

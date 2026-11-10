@@ -1,5 +1,5 @@
 import { ItemScope } from '@/renderer/context';
-import { Dots, Field, Meter } from '@/renderer/primitives';
+import { Dots, Field, Meter, ProficiencyControl } from '@/renderer/primitives';
 import type { SectionDefinition } from '../types';
 import fields, { PROFICIENCY_LABELS, PROFICIENCY_LEVELS } from './fields';
 
@@ -19,13 +19,15 @@ export default {
                                 <li key={item.id}>
                                     <ItemScope section={section} item={item}>
                                         <Field name="name" />
-                                        <span className="cv-rated-label">
-                                            {
-                                                PROFICIENCY_LABELS[
-                                                    item.proficiency
-                                                ]
-                                            }
-                                        </span>
+                                        <ProficiencyControl>
+                                            <span className="cv-rated-label">
+                                                {
+                                                    PROFICIENCY_LABELS[
+                                                        item.proficiency
+                                                    ]
+                                                }
+                                            </span>
+                                        </ProficiencyControl>
                                     </ItemScope>
                                 </li>
                             ))}
@@ -45,20 +47,27 @@ export default {
                             const level = PROFICIENCY_LEVELS[item.proficiency];
 
                             return (
-                                <li key={item.id} className="cv-rated">
+                                <li key={item.id}>
                                     <ItemScope section={section} item={item}>
-                                        <Field
-                                            name="name"
-                                            className="cv-rated-name"
-                                        />
-                                        {display === 'dots' ? (
-                                            <Dots level={level} label={label} />
-                                        ) : (
-                                            <Meter
-                                                level={level}
-                                                label={label}
+                                        <div className="cv-rated">
+                                            <Field
+                                                name="name"
+                                                className="cv-rated-name"
                                             />
-                                        )}
+                                            <ProficiencyControl>
+                                                {display === 'dots' ? (
+                                                    <Dots
+                                                        level={level}
+                                                        label={label}
+                                                    />
+                                                ) : (
+                                                    <Meter
+                                                        level={level}
+                                                        label={label}
+                                                    />
+                                                )}
+                                            </ProficiencyControl>
+                                        </div>
                                     </ItemScope>
                                 </li>
                             );

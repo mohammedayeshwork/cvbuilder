@@ -16,6 +16,7 @@ import { getTemplate } from '@/templates/registry';
 import { ItemScope, RenderProvider, useRender } from './context';
 import type { RenderMode } from './context';
 import { CoverLetterBody } from './CoverLetterBody';
+import { useEdit } from './edit';
 import { isBlank } from './format';
 import { SectionTitle } from './primitives';
 
@@ -146,15 +147,21 @@ function CoverLetterPages({ content }: { content: CoverLetterContent }) {
 }
 
 function HeaderView({ section }: { section: Section }) {
-    const { template } = useRender();
+    const { template, mode } = useRender();
+    const edit = useEdit();
     const { Header } = template;
-
-    return (
+    const header = (
         <ItemScope section={section} item={section.items[0]}>
             <header className="cv-header">
                 <Header />
             </header>
         </ItemScope>
+    );
+
+    return mode === 'edit' && edit ? (
+        <edit.SectionFrame section={section}>{header}</edit.SectionFrame>
+    ) : (
+        header
     );
 }
 
@@ -187,6 +194,7 @@ function visibleItems(section: Section, mode: RenderMode): Section {
 
 function SectionView({ section }: { section: Section }) {
     const { mode } = useRender();
+    const edit = useEdit();
     const shown = visibleItems(section, mode);
     const onRequest =
         shown.type === 'references' && shown.settings.onRequestOnly;
@@ -196,8 +204,7 @@ function SectionView({ section }: { section: Section }) {
     }
 
     const [first, ...rest] = sectionBlocks(shown);
-
-    return (
+    const body = (
         <section
             className="cv-section"
             data-section={section.type}
@@ -213,5 +220,11 @@ function SectionView({ section }: { section: Section }) {
                 </div>
             ))}
         </section>
+    );
+
+    return mode === 'edit' && edit ? (
+        <edit.SectionFrame section={section}>{body}</edit.SectionFrame>
+    ) : (
+        body
     );
 }

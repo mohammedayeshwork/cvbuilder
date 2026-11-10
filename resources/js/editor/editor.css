@@ -1,0 +1,306 @@
+/*
+ * Editing affordances on the canvas. Everything here uses outline or
+ * absolute positioning, so turning edit mode on never moves the layout.
+ */
+
+.cv-document[data-mode='edit'] {
+    --edit: color-mix(in srgb, var(--accent) 55%, #3b82f6);
+}
+
+.cv-editable,
+.cv-rich-editable,
+.cv-date-trigger {
+    border-radius: 1.5pt;
+    outline: 1px solid transparent;
+    outline-offset: 1.5pt;
+    cursor: text;
+    transition: outline-color 0.12s;
+}
+
+.cv-editable:hover,
+.cv-rich-editable:hover,
+.cv-date-trigger:hover {
+    outline-color: color-mix(in srgb, var(--edit) 45%, transparent);
+    outline-style: dashed;
+}
+
+.cv-editable:focus,
+.cv-rich-field .ProseMirror-focused,
+.cv-date-trigger:focus-visible,
+.cv-rich-editable:focus-visible {
+    outline: 1.5px solid var(--edit);
+}
+
+.cv-editable:empty::before {
+    content: attr(data-placeholder);
+    color: var(--faint);
+    pointer-events: none;
+}
+
+/* An empty inline field still needs something to click. */
+.cv-editable:empty {
+    display: inline-block;
+    min-width: 2ch;
+}
+
+.cv-rich-field {
+    position: relative;
+}
+
+.cv-rich-field .ProseMirror {
+    outline: none;
+    white-space: normal;
+}
+
+.cv-rich-field .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: inline-start;
+    height: 0;
+    color: var(--faint);
+    pointer-events: none;
+}
+
+.cv-date-trigger {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* ----------------------------------------------------------- toolbars */
+
+.cv-toolbar {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: 2px;
+    border: 1px solid #d4d4d8;
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+    color: #27272a;
+    font:
+        500 12px/1 system-ui,
+        sans-serif;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+}
+
+.cv-toolbar button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 4px;
+    border: 0;
+    border-radius: 4px;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.cv-toolbar button:hover,
+.cv-toolbar button[data-active] {
+    background: #f4f4f5;
+}
+
+.cv-toolbar button[data-active] {
+    color: #1d4ed8;
+}
+
+.cv-toolbar button:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: -2px;
+}
+
+.cv-toolbar svg {
+    width: 14px;
+    height: 14px;
+}
+
+.cv-toolbar-label {
+    padding: 0 6px;
+    color: #71717a;
+}
+
+.cv-toolbar-form {
+    display: flex;
+    gap: 4px;
+}
+
+.cv-toolbar-form input {
+    width: 200px;
+    height: 24px;
+    padding: 0 6px;
+    border: 1px solid #d4d4d8;
+    border-radius: 4px;
+    font: inherit;
+}
+
+.cv-rich-toolbar {
+    inset-block-end: calc(100% + 4px);
+    inset-inline-start: -2px;
+}
+
+/* ----------------------------------------------------------- sections */
+
+.cv-section-frame {
+    position: relative;
+}
+
+.cv-section-frame::before {
+    position: absolute;
+    inset: -2mm -3mm;
+    border-radius: 2mm;
+    content: '';
+    outline: 1px dashed transparent;
+    pointer-events: none;
+    transition: outline-color 0.12s;
+}
+
+.cv-section-frame:hover::before,
+.cv-section-frame:focus-within::before {
+    outline-color: color-mix(in srgb, var(--edit) 30%, transparent);
+}
+
+.cv-section-toolbar,
+.cv-add-entry {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s;
+}
+
+.cv-section-frame:hover > .cv-section-toolbar,
+.cv-section-frame:focus-within > .cv-section-toolbar,
+.cv-section-frame:hover > .cv-add-entry,
+.cv-section-frame:focus-within > .cv-add-entry,
+.cv-add-entry:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cv-section-toolbar {
+    inset-block-start: -1.5mm;
+    inset-inline-end: -1mm;
+}
+
+.cv-add-entry {
+    position: absolute;
+    z-index: 10;
+    inset-block-start: calc(100% + 1mm);
+    inset-inline-start: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border: 1px dashed color-mix(in srgb, var(--edit) 60%, transparent);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--edit);
+    font:
+        500 11px/1.2 system-ui,
+        sans-serif;
+    cursor: pointer;
+}
+
+.cv-add-entry svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* -------------------------------------------------------------- items */
+
+.cv-item {
+    position: relative;
+}
+
+.cv-item[data-dragging] {
+    z-index: 30;
+    border-radius: 2pt;
+    background: #ffffff;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.15);
+}
+
+.cv-item-controls {
+    inset-block-start: -2px;
+    inset-inline-end: calc(100% + 2mm);
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s;
+}
+
+.cv-item:hover > .cv-item-controls,
+.cv-item:focus-within > .cv-item-controls {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Inline items (tags, short lists) put their controls above instead. */
+:is(.cv-tags, .cv-inline-list, .cv-rated-grid) .cv-item {
+    display: inline-block;
+}
+
+:is(.cv-tags, .cv-inline-list, .cv-rated-grid) .cv-item-controls {
+    inset-block: auto calc(100% + 2px);
+    inset-inline: auto 0;
+    flex-direction: row;
+}
+
+.cv-rated-grid .cv-item {
+    display: block;
+}
+
+.cv-drag-handle {
+    cursor: grab;
+    touch-action: none;
+}
+
+/* --------------------------------------------------- level, selects */
+
+.cv-level-control {
+    position: relative;
+    overflow: visible;
+}
+
+.cv-level-targets {
+    position: absolute;
+    inset: -4px 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.cv-level-targets button {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.cv-level-targets button:focus-visible {
+    outline: 1.5px solid var(--edit);
+}
+
+.cv-select-overlay {
+    position: relative;
+    display: inline-flex;
+}
+
+.cv-select-overlay select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.cv-select-overlay:has(select:focus-visible) {
+    outline: 1.5px solid var(--edit);
+    outline-offset: 1.5pt;
+}
